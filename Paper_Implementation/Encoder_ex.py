@@ -62,7 +62,6 @@ transform = transforms.Compose([transforms.ToTensor(), transforms.Lambda(lambda 
 
 train_dataset = datasets.MNIST(root='./data', train=True, transform=transform, download=True)
 test_dataset = datasets.MNIST(root='./data', train=False, transform=transform, download=True)
-
 train_loader = data.DataLoader(train_dataset, batch_size=256, shuffle=True)
 test_loader = data.DataLoader(test_dataset, batch_size=256, shuffle=False)
 
@@ -94,7 +93,6 @@ else:
         print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {epoch_loss/len(train_loader):.4f}")
     torch.save(model.state_dict(), "model.pth")
 
-# Encode and Decode Test Images
 model.eval()
 encoded_list = []
 decoded_list = []
@@ -102,7 +100,7 @@ labels = []
 
 with torch.no_grad():
     for images, y in test_loader:
-        images = images.to(device)  # Move images to GPU
+        images = images.to(device) 
         encoded = model.encoder(images).cpu().numpy()  # Convert to NumPy for visualization
         decoded = model.decoder(torch.tensor(encoded, dtype=torch.float32).to(device)).cpu().numpy()
         encoded_list.append(encoded)
@@ -113,7 +111,7 @@ encoded_imgs = np.vstack(encoded_list)
 decoded_imgs = np.vstack(decoded_list)
 labels = np.array(labels)
 
-# Generate Mesh Grid for Latent Space on GPU
+# Generate Mesh Grid for Latent Space
 mesh = {}
 x_range = list(range(-90, 90, 5))
 y_range = list(range(-90, 90, 5))
@@ -122,14 +120,14 @@ for x in tqdm(x_range):
     for y in y_range:
         if x not in mesh:
             mesh[x] = {}
-        latent_vector = torch.tensor([[x, y]], dtype=torch.float32, device=device)  # On GPU
+        latent_vector = torch.tensor([[x, y]], dtype=torch.float32, device=device) 
         with torch.no_grad():
-            mesh[x][y] = model.decoder(latent_vector).cpu().numpy().reshape(28, 28)  # Convert to CPU for plotting
+            mesh[x][y] = model.decoder(latent_vector).cpu().numpy().reshape(28, 28)  
 
 arr = np.zeros((180, 180, 28, 28))
 for x in x_range:
     for y in y_range:
-        arr[(x + 90) // 5][(y + 90) // 5] = mesh[x][y]  # Adjust indices
+        arr[(x + 90) // 5][(y + 90) // 5] = mesh[x][y] 
 
 del mesh  # Free memory
 
@@ -141,12 +139,8 @@ ax[0].scatter(encoded_imgs[:, 0], encoded_imgs[:, 1], c=labels, s=8, cmap='tab10
 def onclick(event):
     if event.xdata is None or event.ydata is None:
         return
-    
-    # Convert latent space (-90 to 90) to array indices (0 to 180)
-    ix = int((event.xdata + 90) / 5)  # Normalize and scale
+    ix = int((event.xdata + 90) / 5)
     iy = int((event.ydata + 90) / 5)
-
-    # Ensure indices are within valid range
     if 0 <= ix < arr.shape[0] and 0 <= iy < arr.shape[1]:
         ax[1].imshow(arr[ix][iy], cmap='gray')
         plt.draw()
