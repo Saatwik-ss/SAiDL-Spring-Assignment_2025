@@ -32,9 +32,12 @@ The implementation includes:
 - **Prioritized Experience Replay (PER)** (Better sample efficiency)
 - **n-Step Returns** (Stabilizing Q-value estimation)
 - **Independent Gaussian Noise** (for Actor Exploration)
-- **Residual Network Architecture for Actor-Critic** (Improved stability)  
-
-This setup is designed for **maximizing performance** in the Mujoco Hopper environment while experimenting with different exploration strategies.
+- **Residual Network Architecture for Actor-Critic** (Improved stability)
+- [Download TD3 Actor Model](saved_models/td3_actor_1000.pth)
+- [Download TD3 Critic Model](saved_models/td3_critic_1000.pth)
+- Had troubles with implementing the .pth file for visualization and testing but it ran later.
+- The hopper landed some jumps but leaned a lot more than it should have and fell before reaching the end and couldn't complete the terrain.
+- However with more training i believe it would reach over and cover the full path without much trouble.
 
 ---
 
