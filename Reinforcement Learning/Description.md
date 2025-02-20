@@ -22,13 +22,6 @@ However to my dissappointment, the model was very unstable and the rewards were 
 
 # **Implementation Steps**  
 # TD3 Implementation for Hopper-v4
-### Overview
-- Delayed Policy Updates for stability
-- Gaussian Noise Exploration with periodic strong jumps
-
-- Training loop with model checkpoints
-
-
 
 The implementation has tried to include features as asked in the assignment question
 - **Twin Q-Networks** (TD3's double critic for reduced overestimation bias)
