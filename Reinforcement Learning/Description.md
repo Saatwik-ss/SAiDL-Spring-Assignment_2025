@@ -20,12 +20,21 @@ However to my dissappointment, the model was very unstable and the rewards were 
 
 ---
 
-## **Implementation Steps**  
+# **Implementation Steps**  
+## TD3 Implementation for Hopper-v4
 
-### **1. Environment Setup**  
-- Used **gymnasium** to create the `Hopper-v4` environment.  
-- Leveraged **Stable-Baselines3** to build the TD3 model.  
+### Overview
+This implementation contains a **Twin Delayed Deep Deterministic Policy Gradient (TD3)** from scratch's implementation for Mujoco’s **Hopper-v4** environment 
 
-### **2. Custom TD3 Model**  
-- Designed a **custom MLP-based actor-critic architecture**.  
-- Introduced **Gaussian noise** for exploration. 
+The implementation includes:
+- **Twin Q-Networks** (TD3's double critic for reduced overestimation bias)
+- **Delayed Policy Updates** (Actor updates less frequently than Critics)
+- **Prioritized Experience Replay (PER)** (Better sample efficiency)
+- **n-Step Returns** (Stabilizing Q-value estimation)
+- **Independent Gaussian Noise** (for Actor Exploration)
+- **Residual Network Architecture for Actor-Critic** (Improved stability)  
+
+This setup is designed for **maximizing performance** in the Mujoco Hopper environment while experimenting with different exploration strategies.
+
+---
+
