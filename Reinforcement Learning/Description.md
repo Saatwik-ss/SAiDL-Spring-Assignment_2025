@@ -39,4 +39,12 @@ The implementation has tried to include features as asked in the assignment ques
 - Completed the terrain few episodes later after using the [TD3_Actor_1000](saved_models/td3_actor_1000.pth)
 
 ---
+# TD3 Agent for Hopper-v4 (Stable-Baselines3)
 
+This script trains a **TD3 agent** using **Stable-Baselines3** on the **Hopper-v4** environment.
+
+##  Features
+- Uses **TD3 with MLP policy**.
+- Adds **Gaussian exploration noise** (`NormalActionNoise`).
+- Similar as the scratch model.
+- Trains for **500,000 timesteps**.
