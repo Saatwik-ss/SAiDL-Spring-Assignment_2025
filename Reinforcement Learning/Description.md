@@ -21,23 +21,29 @@ However to my dissappointment, the model was very unstable and the rewards were 
 ---
 
 # **Implementation Steps**  
-## TD3 Implementation for Hopper-v4
-
+# TD3 Implementation for Hopper-v4
 ### Overview
-This implementation contains a **Twin Delayed Deep Deterministic Policy Gradient (TD3)** from scratch's implementation for Mujoco’s **Hopper-v4** environment 
+- Delayed Policy Updates for stability
+- Gaussian Noise Exploration with periodic strong jumps
 
-The implementation includes:
+- Training loop with model checkpoints
+
+
+
+The implementation has tried to include features as asked in the assignment question
 - **Twin Q-Networks** (TD3's double critic for reduced overestimation bias)
 - **Delayed Policy Updates** (Actor updates less frequently than Critics)
 - **Prioritized Experience Replay (PER)** (Better sample efficiency)
 - **n-Step Returns** (Stabilizing Q-value estimation)
-- **Independent Gaussian Noise** (for Actor Exploration)
-- **Residual Network Architecture for Actor-Critic** (Improved stability)
+- **Independent Gaussian Noise**
+-  Custom reward function(achieved better results than default)
+- Soft Target Updates (Polyak averaging)
+- **Residual Network Architecture for Actor-Critic**
 - [Download TD3 Actor Model](saved_models/td3_actor_1000.pth)
 - [Download TD3 Critic Model](saved_models/td3_critic_1000.pth)
 - Had troubles with implementing the .pth file for visualization and testing but it ran later.
-- The hopper landed some jumps but leaned a lot more than it should have and fell before reaching the end and couldn't complete the terrain.
-- However with more training i believe it would reach over and cover the full path without much trouble.
+- The hopper landed some jumps but leaned a lot more than its limit, but later stabilized after few runs
+- Completed the terrain few episodes later after using the [TD3_Actor_1000](saved_models/td3_actor_1000.pth)
 
 ---
 
