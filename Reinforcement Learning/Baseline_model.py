@@ -12,8 +12,19 @@ action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.1 * np.ones(n
 model = TD3(
     "MlpPolicy",
     env,
-    action_noise=action_noise,
     verbose=1,
+    learning_rate=3e-4,
+    buffer_size=1_000_000,
+    learning_starts=25_000,
+    batch_size=256,
+    tau=0.005,
+    gamma=0.99,
+    train_freq=(1, "episode"),
+    gradient_steps=1,
+    action_noise=action_noise,
+    policy_delay=2,  
+    verbose=1,
+    device="cuda" if torch.cuda.is_available() else "cpu",    
     tensorboard_log="./td3_hopper_tensorboard/",
 )
 
