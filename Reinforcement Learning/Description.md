@@ -41,10 +41,12 @@ The implementation has tried to include features as asked in the assignment ques
 ---
 # TD3 Agent for Hopper-v4 (Stable-Baselines3)
 
-This script trains a **TD3 agent** using **Stable-Baselines3** on the **Hopper-v4** environment.
+Also tried using Stable Baseline MLP Policy model to compare the two models and from a genral eye test, the custom model appeared working better ftert similar number of episodes(10000 each).
+[Stable_Baseline_Model]()
 
 ##  Features
-- Uses **TD3 with MLP policy**.
-- Adds **Gaussian exploration noise** (`NormalActionNoise`).
-- Similar as the scratch model.
-- Trains for **500,000 timesteps**.
+- Uses **TD3 with MLP policy**
+- Adds **Gaussian exploration noise**
+- Similar as the scratch model
+- Trains for **500,000 timesteps**
+---
