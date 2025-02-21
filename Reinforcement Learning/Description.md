@@ -43,7 +43,7 @@ The implementation has tried to include features as asked in the assignment ques
 
 Also tried using Stable Baseline MLP Policy model to compare the two models and from a genral eye test, the custom model appeared working better ftert similar number of episodes(10000 each).
 
-[Stable_Baseline_Model](/Baseline_model.py)
+[Stable_Baseline_Model](Baseline_model.py)
 
 ##  Features
 - Uses **TD3 with MLP policy**
