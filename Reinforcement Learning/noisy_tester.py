@@ -107,6 +107,7 @@ class TD3Agent:
         self.actor_target = Actor(state_dim, action_dim, max_action).to(torch.device("cuda"))
         self.critic = Critic(state_dim, action_dim).to(torch.device("cuda"))
         self.actor_target.load_state_dict(self.actor.state_dict())
+        self.critic_target = Critic(state_dim, action_dim).to(torch.device("cuda"))
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=actor_lr)
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=critic_lr)
         self.replay_buffer = []
@@ -135,15 +136,18 @@ class TD3Agent:
 
         batch = random.sample(self.replay_buffer, self.batch_size)
         states, actions, rewards, next_states, dones = zip(*batch)
+
         states = torch.FloatTensor(states).to(torch.device("cuda"))
         actions = torch.FloatTensor(actions).to(torch.device("cuda"))
         rewards = torch.FloatTensor(rewards).unsqueeze(1).to(torch.device("cuda"))
         next_states = torch.FloatTensor(next_states).to(torch.device("cuda"))
         dones = torch.FloatTensor(dones).unsqueeze(1).to(torch.device("cuda"))
+
         next_actions = (self.actor_target(next_states)).clamp(-self.max_action, self.max_action)
 
         q1_target, q2_target = self.critic_target(next_states, next_actions)
         q_target = rewards + (1 - dones) * self.gamma * torch.min(q1_target, q2_target).detach()
+
         q1, q2 = self.critic(states, actions)
         critic_loss = F.mse_loss(q1, q_target) + F.mse_loss(q2, q_target)
         self.critic_optimizer.zero_grad()
@@ -155,13 +159,17 @@ class TD3Agent:
             self.actor_optimizer.zero_grad()
             actor_loss.backward()
             self.actor_optimizer.step()
+
             self._soft_update(self.actor, self.actor_target)
             self._soft_update(self.critic, self.critic_target)
+
         self.policy_update_step += 1
 
     def _soft_update(self, local_model, target_model):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(self.tau * local_param.data + (1.0 - self.tau) * target_param.data)
+
+
 # ---------------------------- Environment Setup ----------------------------
 env = gym.make(
     "Hopper-v5",
@@ -180,7 +188,6 @@ agent = TD3Agent(state_dim, action_dim, max_action)
 # ---------------------------- Training Phase ----------------------------
 num_episodes = 3000
 save_interval = 600
-
 for episode in range(num_episodes):
     state, _ = env.reset()
     episode_reward = 0
@@ -188,13 +195,15 @@ for episode in range(num_episodes):
         action = agent.select_action(state)
         next_state, reward, done, _, _ = env.step(action)
         agent.store_transition(state, action, reward, next_state, done)
+
         agent.train()
         state = next_state
         episode_reward += reward
+
         if done:
             break
-            
     print(f"Episode {episode + 1}, Reward: {episode_reward:.2f}")
+
     if (episode + 1) % save_interval == 0:
         torch.save(agent.actor.state_dict(), f"td3_actor_noisy{episode+1}.pth")
         torch.save(agent.critic.state_dict(), f"td3_critic_noisy{episode+1}.pth")
@@ -216,6 +225,7 @@ for episode in range(num_test_episodes):
     while not done:
         state_tensor = torch.FloatTensor(state).unsqueeze(0).to(torch.device("cuda"))
         action = agent.actor(state_tensor).cpu().data.numpy().flatten()
+
         next_state, reward, terminated, truncated, _ = env.step(action)
         done = terminated or truncated
         state = next_state
@@ -223,11 +233,12 @@ for episode in range(num_test_episodes):
 
     total_rewards.append(episode_reward)
     print(f"Test Episode {episode+1}: Reward = {episode_reward:.2f}")
-    
+
 # Compute and display average performance
 avg_reward = np.mean(total_rewards)
 print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
 env.close()
+
 import matplotlib.pyplot as plt
 # ---------------------------- Reward Chart ----------------------------
 plt.figure(figsize=(8, 5))
@@ -239,6 +250,8 @@ plt.xticks(range(1, num_test_episodes + 1))
 plt.grid()
 plt.savefig("test_rewards.png")
 plt.show()
+
+# Compute and display average performance
 avg_reward = np.mean(total_rewards)
 print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
 env.close()
