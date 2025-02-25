@@ -10,7 +10,7 @@ from tqdm import tqdm
 # ---------------------------- NoisyLinear Definition ----------------------------
 class NoisyLinear(nn.Module):
     def __init__(self, in_features, out_features, sigma_init=0.017):
-        super(NoisyLinear, self).__init__()
+        nn.Module.__init__(self)
         self.in_features = in_features
         self.out_features = out_features
         self.sigma_init = sigma_init
@@ -57,7 +57,7 @@ class NoisyLinear(nn.Module):
 # ---------------------------- Actor & Critic Definitions ----------------------------
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action):
-        super(Actor, self).__init__()
+        nn.Module.__init__(self)
         self.noisy1 = NoisyLinear(state_dim, 256)
         self.noisy2 = NoisyLinear(256, 256)
         self.noisy3 = NoisyLinear(256, action_dim)
@@ -76,7 +76,7 @@ class Actor(nn.Module):
 
 class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
-        super(Critic, self).__init__()
+        nn.Module.__init__(self)
         self.fc1 = nn.Linear(state_dim + action_dim, 256)
         self.fc2 = nn.Linear(256, 256)
         self.fc3 = nn.Linear(256, 1)
