@@ -7,7 +7,7 @@ import torch.nn.functional as F
 import random
 import matplotlib.pyplot as plt
 
-# ------------------Gamma Noise ------------------ #
+# -------------------------Gamma Noise ---------------------------#
 class NoisyLinearGamma(nn.Module):
     def __init__(self, in_features, out_features, sigma_init=0.017):
         nn.Module.__init__(self)
@@ -54,7 +54,7 @@ class NoisyLinearGamma(nn.Module):
         x = gamma_dist.sample((size,)).squeeze()
         return x - shape * scale
 
-# ------------------ Actor & Critic ------------------ #
+# -------------------------------- Actor & Critic -------------------------------- #
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action):
         nn.Module.__init__(self)
@@ -91,9 +91,9 @@ class Critic(nn.Module):
         q2 = F.relu(self.fc4(sa))
         q2 = F.relu(self.fc5(q2))
         q2 = self.fc6(q2)
-        return q1, q2;
+        return q2, q1
 
-# ------------------ TD3 Agent ------------------ #
+# ------------------------------ TD3 Agent ----------------------------------- #
 class TD3Agent:
     def __init__(self, state_dim, action_dim, max_action, gamma=0.99, tau=0.005):
         self.gamma = gamma
@@ -184,7 +184,7 @@ agent = TD3Agent(state_dim, action_dim, max_action)
 
 # ---------------------------- Training Phase ------------------------------------ #
 
-num_episodes = 4000
+num_episodes = 1200
 save_interval = 600
 
 for ep in range(num_episodes):
@@ -201,8 +201,8 @@ for ep in range(num_episodes):
 
     print(f"Episode {ep+1}, Reward: {episode_reward:.2f}")
     if (ep + 1) % save_interval == 0:
-        torch.save(agent.actor.state_dict(), f"td3_actor_gamma_{ep+1}.pth")
-        torch.save(agent.critic.state_dict(), f"td3_critic_gamma_{ep+1}.pth")
+        torch.save(agent.actor.state_dict(), f"td3_actor_gamma2{ep+1}.pth")
+        torch.save(agent.critic.state_dict(), f"td3_critic_gamma2{ep+1}.pth")
 
 
 
