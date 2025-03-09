@@ -17,7 +17,7 @@ We introduce **label noise** to the CIFAR-10 dataset:
 ---
 
 ### **2. Normalized Losses for Robustness**
-We train models using both **vanilla** and **normalized** loss functions:
+Models were trained using both **vanilla** and **normalized** loss functions:
 - **Vanilla losses:** Cross-Entropy (CE), Focal Loss (FL).
 - **Normalized losses:** Normalized Cross-Entropy (NCE), Normalized Focal Loss (NFL).
 
