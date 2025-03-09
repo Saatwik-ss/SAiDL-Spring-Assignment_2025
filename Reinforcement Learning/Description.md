@@ -6,7 +6,7 @@ This repository contains an implementation of **Twin Delayed Deep Deterministic 
 Having previously worked with **Deep Double Q-Networks (DDQN)** in an **ERC project**, I wanted to extend my experience in reinforcement learning by reimplementing my prior knowledge in RL models to **TD3 model**
 
 ## **Learning stage**  
-- Started with Saidl suggested resources like[Open-AI](https://spinningup.openai.com/en/latest/index.html) and **Reinforcement Learning: An Introduction by Sutton and Barto**.
+- Started with Saidl suggested resources like [Open-AI](https://spinningup.openai.com/en/latest/index.html) and **Reinforcement Learning: An Introduction by Sutton and Barto**.
 - Maybe not fully comfortable with the more finer details, i started with the working.
 
 ### **Implementing TD3 from Scratch**  
@@ -33,7 +33,6 @@ The implementation has tried to include features as asked in the assignment ques
 - Soft Target Updates (Polyak averaging)
 - **Residual Network Architecture for Actor-Critic**
 - [Download TD3 Actor Model](saved_models/td3_actor_1000.pth)
-- [Download TD3 Critic Model](saved_models/td3_critic_1000.pth)
 - Had troubles with implementing the .pth file for visualization and testing but it ran later.
 - The hopper landed some jumps but leaned a lot more than its limit, but later stabilized after few runs
 - Completed the terrain few episodes later after using the [TD3_Actor_1000](saved_models/td3_actor_1000.pth)
