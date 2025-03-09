@@ -7,17 +7,19 @@ Having previously worked with **Deep Double Q-Networks (DDQN)** in an **ERC proj
 
 ## **Learning stage**  
 - Started with Saidl suggested resources like [Open-AI](https://spinningup.openai.com/en/latest/index.html) and **Reinforcement Learning: An Introduction by Sutton and Barto**.
-- Maybe not fully comfortable with the more finer details, i started with the working.
+- Watched some youtube videos about RL mostly from the youtube channel https://www.youtube.com/@jekyllstein
 
 ### **Implementing TD3 from Scratch**  
-Initially i was having troubles whit downloading MuJoco from the site or the pip commands(as suggested in open-ai spinning up) so i decided to use the gymnasium environment to work with and make the hopper.
+Initially had troubles whit downloading MuJoco from the site or the pip commands(as suggested in open-ai spinning up) so used the gymnasium environment to work with and make the hopper.
 Rather than relying entirely on pre-built libraries, I attempted to **implement the entire TD3 architecture from scratch** to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question. This approach allowed me to:  
- **Modify individual components** such as the actor-critic networks, noise models, and training loops.    
- **Easily plug and play parts** like different activation functions, optimizers, and loss functions without constraints from pre-packaged implementations.  
+**Modify individual components** such as the actor-critic networks, noise models, and training loops.    
+**Easily plug and play parts** like different activation functions, optimizers, were tested and used and hyperparameters which worked best with the eye test were used.  
 
-By implementing TD3 from the ground up, I was able to develop a deeper understanding of reinforcement learning dynamics while maintaining the flexibility to experiment with **custom exploration strategies, loss functions, and network structures**.
-However to my dissappointment, the model was very unstable and the rewards were oscillating to very high degrees very fast which in turn led to some funny movements from the agent.
-
+- By implementing TD3 from the ground up, I was able to develop a deeper understanding of reinforcement learning dynamics while maintaining the flexibility to experiment with **custom exploration strategies, loss functions, and network structures**.
+- Model intially was very unstable and the rewards were very random, took some help from LLMs but the results were still similar even after many episodes and the model didn't work as expected.
+- Tried searching for implementation example with but couldn't find anything substantial.
+- Tried reading the gymnasium documemtation more deeply, till here i treated it just like the **ERC PROJECT** with rewards spelled out for different action spaces.
+- Then used the same **Actor and Critic** models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps (Training took extra time because i was adamant on using human render mode).
 ---
 
 # **Implementation Steps**  
