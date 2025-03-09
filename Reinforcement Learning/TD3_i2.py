@@ -6,8 +6,10 @@ import torch.optim as optim
 import torch.nn.functional as F
 import random
 from tqdm import tqdm
+import matplotlib.pyplot as plt
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Define the Actor network
+# ---------------------------- Actor and Critic -------------------------------- #
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action):
         super(Actor, self).__init__()
@@ -17,47 +19,47 @@ class Actor(nn.Module):
         self.max_action = max_action
 
     def forward(self, state):
-        state = state.to(torch.device("cuda"))
+        state = state.to(device)
         x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
         return torch.tanh(self.fc3(x)) * self.max_action  
 
-# Define the Critic network (Twin Q-networks for TD3)
+
 class Critic(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(Critic, self).__init__()
+        # Q1 architecture
         self.fc1 = nn.Linear(state_dim + action_dim, 256)
         self.fc2 = nn.Linear(256, 256)
         self.fc3 = nn.Linear(256, 1)
-
+        # Q2 architecture
         self.fc4 = nn.Linear(state_dim + action_dim, 256)
         self.fc5 = nn.Linear(256, 256)
         self.fc6 = nn.Linear(256, 1)
 
     def forward(self, state, action):
-        state_action = torch.cat([state, action], dim=1).to(torch.device("cuda"))
-
+        state_action = torch.cat([state, action], dim=1).to(device)
+        # Q1 forward
         q1 = F.relu(self.fc1(state_action))
         q1 = F.relu(self.fc2(q1))
         q1 = self.fc3(q1)
-
+        # Q2 forward
         q2 = F.relu(self.fc4(state_action))
         q2 = F.relu(self.fc5(q2))
         q2 = self.fc6(q2)
+        return q1, q2
 
-        return q1, q2  # Return both Q-values
-
-# TD3 Agent
+# ---------------------------- TD3 Agent -------------------------------- #
 class TD3Agent:
     def __init__(self, state_dim, action_dim, max_action, gamma=0.99, tau=0.005, actor_lr=3e-4, critic_lr=3e-4):
         self.gamma = gamma
         self.tau = tau
         self.max_action = max_action
 
-        self.actor = Actor(state_dim, action_dim, max_action).to(torch.device("cuda"))
-        self.actor_target = Actor(state_dim, action_dim, max_action).to(torch.device("cuda"))
-        self.critic = Critic(state_dim, action_dim).to(torch.device("cuda"))
-        self.critic_target = Critic(state_dim, action_dim).to(torch.device("cuda"))
+        self.actor = Actor(state_dim, action_dim, max_action).to(device)
+        self.actor_target = Actor(state_dim, action_dim, max_action).to(device)
+        self.critic = Critic(state_dim, action_dim).to(device)
+        self.critic_target = Critic(state_dim, action_dim).to(device)
 
         self.actor_target.load_state_dict(self.actor.state_dict())
         self.critic_target.load_state_dict(self.critic.state_dict())
@@ -70,25 +72,15 @@ class TD3Agent:
         self.batch_size = 128  
         self.policy_delay = 2
         self.policy_update_step = 0
-
-        # Initialize exploration noise
-        self.exploration_noise = 0.3  # Start with high noise, decay over time
+        self.exploration_noise = 0.3  
 
     def select_action(self, state):
-        state = torch.FloatTensor(state).unsqueeze(0).to(torch.device("cuda"))
+        state = torch.FloatTensor(state).unsqueeze(0).to(device)
         action = self.actor(state).cpu().data.numpy().flatten()
 
-        # Encourage periodic strong jumps
-        if random.random() < 0.1:  
-            action += np.array([0.5, 0.5, 0.5])  
-
-        # Add decaying Gaussian exploration noise
         noise = np.random.normal(0, self.exploration_noise * self.max_action, size=action.shape)
         action = np.clip(action + noise, -self.max_action, self.max_action)
-
-        # Decay noise over time
         self.exploration_noise = max(0.1, self.exploration_noise * 0.999)
-
         return action
 
     def store_transition(self, state, action, reward, next_state, done):
@@ -103,14 +95,16 @@ class TD3Agent:
         batch = random.sample(self.replay_buffer, self.batch_size)
         states, actions, rewards, next_states, dones = zip(*batch)
 
-        states = torch.FloatTensor(states).to(torch.device("cuda"))
-        actions = torch.FloatTensor(actions).to(torch.device("cuda"))
-        rewards = torch.FloatTensor(rewards).unsqueeze(1).to(torch.device("cuda"))
-        next_states = torch.FloatTensor(next_states).to(torch.device("cuda"))
-        dones = torch.FloatTensor(dones).unsqueeze(1).to(torch.device("cuda"))
+        states = torch.FloatTensor(states).to(device)
+        actions = torch.FloatTensor(actions).to(device)
+        rewards = torch.FloatTensor(rewards).unsqueeze(1).to(device)
+        next_states = torch.FloatTensor(next_states).to(device)
+        dones = torch.FloatTensor(dones).unsqueeze(1).to(device)
+
         next_actions = self.actor_target(next_states).clamp(-self.max_action, self.max_action)
         q1_target, q2_target = self.critic_target(next_states, next_actions)
         q_target = rewards + (1 - dones) * self.gamma * torch.min(q1_target, q2_target).detach()
+
         q1, q2 = self.critic(states, actions)
         critic_loss = F.mse_loss(q1, q_target) + F.mse_loss(q2, q_target)
         self.critic_optimizer.zero_grad()
@@ -125,21 +119,20 @@ class TD3Agent:
 
             self._soft_update(self.actor, self.actor_target)
             self._soft_update(self.critic, self.critic_target)
-
         self.policy_update_step += 1
 
     def _soft_update(self, local_model, target_model):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(self.tau * local_param.data + (1.0 - self.tau) * target_param.data)
 
-# Environment Setup
+# ---------------------------- Environment Setup --------------------------------
 env = gym.make(
     "Hopper-v5",
     render_mode="human",
     forward_reward_weight=10.0,
     ctrl_cost_weight=0.005,
     healthy_reward=2.0,
-    terminate_when_unhealthy=False,
+    terminate_when_unhealthy= False,
 )
 
 state_dim = env.observation_space.shape[0]
@@ -147,25 +140,58 @@ action_dim = env.action_space.shape[0]
 max_action = float(env.action_space.high[0])
 agent = TD3Agent(state_dim, action_dim, max_action)
 
-# Training
-num_episodes = 10000
-save_interval = 1000
-for episode in tqdm(range(num_episodes)):
-    state, _ = env.reset()
-    done = False
-    episode_reward = 0
 
-    while not done:
+# ---------------------------- Training Phase ------------------------------------ #
+num_episodes = 5000
+save_interval = 1000
+
+for ep in range(num_episodes):
+    state, _ = env.reset()
+    episode_reward = 0
+    for _ in range(1000):
         action = agent.select_action(state)
-        next_state, reward, terminated, truncated, _ = env.step(action)
-        done = terminated or truncated or (next_state[5] < 0.1 and next_state[0] < 0.5)  
+        next_state, reward, done, _, _ = env.step(action)
         agent.store_transition(state, action, reward, next_state, done)
         agent.train()
         state = next_state
         episode_reward += reward
+        if done: break
 
-    print(f"Episode {episode}, Reward: {episode_reward:.2f}")
-    if (episode + 1) % save_interval == 0:
-        torch.save(agent.actor.state_dict(), f"td3_actor_{episode+1}.pth")
-        torch.save(agent.critic.state_dict(), f"td3_critic_{episode+1}.pth")
-        print(f"Model saved at episode {episode+1}")
+    print(f"Episode {ep+1}, Reward: {episode_reward:.2f}")
+    if (ep + 1) % save_interval == 0:
+        torch.save(agent.actor.state_dict(), f"td3_actor_{ep+1}.pth")
+        
+# ---------------------------- Testing Phase -------------------------------- #
+print("\n=== Testing Phase ===")
+agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_5000.pth"))
+agent.actor.eval()
+
+num_test_episodes = 10
+total_rewards = []
+
+for i in range(num_test_episodes):
+    state, _ = env.reset()
+    done = False
+    ep_reward = 0
+    while not done:
+        s_tensor = torch.FloatTensor(state).unsqueeze(0).cuda()
+        action = agent.actor(s_tensor).cpu().data.numpy().flatten()
+        next_state, reward, terminated, truncated, _ = env.step(action)
+        done = terminated or truncated
+        state = next_state
+        ep_reward += reward
+    total_rewards.append(ep_reward)
+    print(f"Test Episode {i+1}: Reward = {ep_reward:.2f}")
+
+avg_reward = np.mean(total_rewards)
+print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
+env.close()
+
+plt.figure(figsize=(8, 5))
+plt.plot(range(1, num_test_episodes + 1), total_rewards, marker='o', color='g')
+plt.xlabel("Test Episode")
+plt.ylabel("Reward")
+plt.title("TD3 Test Rewards")
+plt.grid()
+plt.savefig("test_rewards.png")
+plt.show()
