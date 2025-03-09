@@ -201,14 +201,11 @@ for ep in range(num_episodes):
 
     print(f"Episode {ep+1}, Reward: {episode_reward:.2f}")
     if (ep + 1) % save_interval == 0:
-        torch.save(agent.actor.state_dict(), f"td3_actor_gamma2{ep+1}.pth")
-        torch.save(agent.critic.state_dict(), f"td3_critic_gamma2{ep+1}.pth")
-
-
+        torch.save(agent.actor.state_dict(), f"td3_actor_gamma_{ep+1}.pth")
 
 # ---------------------------- Testing Phase -------------------------------- #
 print("\n=== Testing Phase ===")
-agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_noisy_gamma21200.pth"))
+agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_noisy_gamma_1200.pth"))
 agent.actor.eval()
 
 num_test_episodes = 10
