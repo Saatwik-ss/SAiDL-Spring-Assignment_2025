@@ -6,6 +6,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 import random
 from tqdm import tqdm
+import matplotlib.pyplot as plt
 
 # ---------------------------- NoisyLinear Definition ----------------------------
 class NoisyLinear(nn.Module):
@@ -95,7 +96,7 @@ class Critic(nn.Module):
         return q1,q2;
 
 
-# ---------------------------- TD3 Agent ----------------------------
+# ---------------------------- TD3 Agent ---------------------------- #
 class TD3Agent:
     def __init__(self, state_dim, action_dim, max_action, gamma=0.99, tau=0.005, actor_lr=3e-4, critic_lr=3e-4):
         self.gamma = gamma
@@ -170,7 +171,7 @@ class TD3Agent:
             target_param.data.copy_(self.tau * local_param.data + (1.0 - self.tau) * target_param.data)
 
 
-# ---------------------------- Environment Setup ----------------------------
+# ---------------------------- Environment Setup ---------------------------- #
 env = gym.make(
     "Hopper-v5",
     render_mode="human",
@@ -186,7 +187,7 @@ max_action = float(env.action_space.high[0])
 agent = TD3Agent(state_dim, action_dim, max_action)
 
 # ---------------------------- Training Phase ----------------------------
-num_episodes = 3000
+num_episodes = 1200
 save_interval = 600
 for episode in range(num_episodes):
     state, _ = env.reset()
@@ -211,7 +212,7 @@ for episode in range(num_episodes):
 # ---------------------------- Testing Phase ----------------------------
 print("\n=== Starting Testing Phase ===")
 
-agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_noisy1200.pth"))
+agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_gaussian1200.pth"))
 agent.actor.eval()
 
 num_test_episodes = 10
@@ -239,8 +240,8 @@ avg_reward = np.mean(total_rewards)
 print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
 env.close()
 
-import matplotlib.pyplot as plt
-# ---------------------------- Reward Chart ----------------------------
+
+# ---------------------------- Reward Chart ----------------------------# 
 plt.figure(figsize=(8, 5))
 plt.plot(range(1, num_test_episodes + 1), total_rewards, marker='o', linestyle='-', color='g', alpha=0.7)
 plt.xlabel("Test Episode")
@@ -250,8 +251,3 @@ plt.xticks(range(1, num_test_episodes + 1))
 plt.grid()
 plt.savefig("test_rewards.png")
 plt.show()
-
-# Compute and display average performance
-avg_reward = np.mean(total_rewards)
-print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
-env.close()
