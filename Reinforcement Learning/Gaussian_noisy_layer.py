@@ -92,7 +92,7 @@ class Critic(nn.Module):
         q2 = F.relu(self.fc4(state_action))
         q2 = F.relu(self.fc5(q2))
         q2 = self.fc6(q2)
-        return q2,q1;
+        return q1,q2;
 
 
 # ---------------------------- TD3 Agent ----------------------------
