@@ -19,7 +19,7 @@ Easily plug and play parts like different activation functions, optimizers, were
 - Model intially was very unstable and the rewards were very random, took some help from LLMs but the results were still similar even after many episodes and the model didn't work as expected.
 - Tried searching for implementation example with but couldn't find anything substantial.
 - Tried reading the gymnasium documemtation more deeply, till here i treated it just like the **ERC PROJECT** with rewards spelled out for different action spaces.
-- Used the same Actor and Critic models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps (Training took extra time because i was adamant on using human render mode).
+- Used the same Actor and Critic models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps(Training took extra time because i was adamant on using human render mode), the agent returned few jumps indicating that it was learning well at [this stage](initial_jump.mp4) .
 ---
 
 # **Implementation Steps**  
