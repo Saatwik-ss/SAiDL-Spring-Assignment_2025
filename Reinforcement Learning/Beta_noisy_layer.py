@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 # ------------------ Beta Noise ------------------ #
 class NoisyLinearBeta(nn.Module):
-    def __init__(self, in_features, out_features, sigma_init=0.017):
+    def __init__(self, in_features, out_features, sigma_init=0.02):
         nn.Module.__init__(self)
         self.in_features = in_features
         self.out_features = out_features
@@ -113,11 +113,11 @@ class TD3Agent:
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=3e-4)
 
         self.replay_buffer = []
-        self.buffer_capacity = 2_000_000
-        self.batch_size = 128
+        self.buffer_capacity = 2000000
+        self.batch_size = 256
         self.policy_delay = 2
         self.policy_update_step = 0
-        self.exploration_noise = 0.3
+        self.exploration_noise = 0.3333
 
     def select_action(self, state):
         state_t = torch.FloatTensor(state).unsqueeze(0).cuda()
@@ -230,7 +230,6 @@ for i in range(num_test_episodes):
 avg_reward = np.mean(total_rewards)
 print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
 env.close()
-
 plt.figure(figsize=(8, 5))
 plt.plot(range(1, num_test_episodes + 1), total_rewards, marker='o', color='g')
 plt.xlabel("Test Episode")
