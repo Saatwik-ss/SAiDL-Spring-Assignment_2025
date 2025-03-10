@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 # -------------------------Gamma Noise ---------------------------#
 class NoisyLinearGamma(nn.Module):
-    def __init__(self, in_features, out_features, sigma_init=0.017):
+    def __init__(self, in_features, out_features, sigma_init=0.02):
         nn.Module.__init__(self)
         self.in_features = in_features
         self.out_features = out_features
