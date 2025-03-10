@@ -11,15 +11,15 @@ Having previously worked with **Deep Double Q-Networks (DDQN)** in an **ERC proj
 
 ### **Implementing TD3 from Scratch**  
 Initially had troubles whit downloading MuJoco from the site or the pip commands(as suggested in open-ai spinning up) so used the gymnasium environment to work with and make the hopper.
-Rather than relying entirely on pre-built libraries, I attempted to **implement the entire TD3 architecture from scratch** to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question. This approach allowed me to:  
-**Modify individual components** such as the actor-critic networks, noise models, and training loops.    
-**Easily plug and play parts** like different activation functions, optimizers, were tested and used and hyperparameters which worked best with the eye test were used.  
+Rather than relying entirely on pre-built libraries, attempted to **implement the entire TD3 architecture from scratch** to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question. This approach allowed :  
+Modify individual components such as the actor-critic networks, noise models, and training loops.    
+Easily plug and play parts like different activation functions, optimizers, were tested and used and hyperparameters which worked best with the eye test were used.  
 
-- By implementing TD3 from the ground up, I was able to develop a deeper understanding of reinforcement learning dynamics while maintaining the flexibility to experiment with **custom exploration strategies, loss functions, and network structures**.
+- By implementing TD3 from the ground up, was able to experiment with custom exploration strategies, loss functions, and network structures.
 - Model intially was very unstable and the rewards were very random, took some help from LLMs but the results were still similar even after many episodes and the model didn't work as expected.
 - Tried searching for implementation example with but couldn't find anything substantial.
 - Tried reading the gymnasium documemtation more deeply, till here i treated it just like the **ERC PROJECT** with rewards spelled out for different action spaces.
-- Then used the same **Actor and Critic** models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps (Training took extra time because i was adamant on using human render mode).
+- Used the same Actor and Critic models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps (Training took extra time because i was adamant on using human render mode).
 ---
 
 # **Implementation Steps**  
@@ -34,10 +34,10 @@ The implementation has tried to include features as asked in the assignment ques
 -  Custom reward function(achieved better results than default)
 - Soft Target Updates (Polyak averaging)
 - **Residual Network Architecture for Actor-Critic**
-- [Download TD3 Actor Model](saved_models/td3_actor_1000.pth)
+- [Download TD3 Actor Model](td3_actor_5000.pth)
 - Had troubles with implementing the .pth file for visualization and testing but it ran later.
 - The hopper landed some jumps but leaned a lot more than its limit, but later stabilized after few runs
-- Completed the terrain few episodes later after using the [TD3_Actor_1000](saved_models/td3_actor_1000.pth)
+- Hopper started completing the terrain few times somewhere around 2500 episodes.
 
 ---
 # TD3 Agent for Hopper-v4 (Stable-Baselines3)
