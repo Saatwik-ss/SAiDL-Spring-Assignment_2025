@@ -143,7 +143,7 @@ agent = TD3Agent(state_dim, action_dim, max_action)
 
 # ---------------------------- Training Phase ------------------------------------ #
 num_episodes = 5000
-save_interval = 1000
+save_interval = 2500
 
 for ep in range(num_episodes):
     state, _ = env.reset()
