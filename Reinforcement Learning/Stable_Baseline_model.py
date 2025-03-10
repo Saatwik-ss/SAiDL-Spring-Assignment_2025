@@ -3,6 +3,7 @@ import numpy as np
 import torch
 from stable_baselines3 import TD3
 from stable_baselines3.common.noise import NormalActionNoise
+import matplotlib.pyplot as plt
 # ---------------------------- Environment Setup -------------------------------- #
 train_env = gym.make(
     "Hopper-v5",
@@ -64,3 +65,11 @@ for episode in range(num_test_episodes):
 avg_reward = np.mean(all_rewards)
 print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
 test_env.close()
+plt.figure(figsize=(8, 5))
+plt.plot(range(1, num_test_episodes + 1), all_rewards, marker='o', color='g')
+plt.xlabel("Test Episode")
+plt.ylabel("Reward")
+plt.title("TD3 Test Rewards")
+plt.grid()
+plt.savefig("test_rewards.png")
+plt.show()
