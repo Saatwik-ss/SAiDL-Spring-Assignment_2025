@@ -34,10 +34,10 @@ class NoisyLinearGamma(nn.Module):
         self.bias_sigma.data.fill_(self.sigma_init)
 
     def reset_noise(self):
-        epsilon_in = torch.randn(self.in_features).sign() * torch.sqrt(torch.abs(torch.randn(self.in_features)))
-        epsilon_out = torch.randn(self.out_features).sign() * torch.sqrt(torch.abs(torch.randn(self.out_features)))
-        self.weight_epsilon.copy_(epsilon_out.unsqueeze(1) * epsilon_in.unsqueeze(0))
-        self.bias_epsilon.copy_(epsilon_out)
+        eps_in = self._scale_noise_gamma(self.in_features)
+        eps_out = self._scale_noise_gamma(self.out_features)
+        self.weight_epsilon.copy_(eps_out.unsqueeze(1) * eps_in.unsqueeze(0))
+        self.bias_epsilon.copy_(eps_out)
 
 
     def forward(self, x):
