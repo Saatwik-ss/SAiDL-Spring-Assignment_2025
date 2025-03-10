@@ -28,16 +28,19 @@ Easily plug and play parts like different activation functions, optimizers, were
 The implementation has tried to include features as asked in the assignment question
 - **Twin Q-Networks** (TD3's double critic for reduced overestimation bias)
 - **Delayed Policy Updates** (Actor updates less frequently than Critics)
-- **Prioritized Experience Replay (PER)** (Better sample efficiency)
-- **n-Step Returns** (Stabilizing Q-value estimation)
-- Custom reward function(achieved better results than default)
-- Soft Target Updates (Polyak averaging)
+- **Prioritized Experience Replay (PER)** (Better sample efficiency).
+- **n-Step Returns** (Stabilizing Q-value estimation).
+- Custom reward function(achieved better results than default).
+- Random noise added for exploration.
+- Soft Target Updates (Polyak averaging).
 - **Residual Network Architecture for Actor-Critic**
 - [Download TD3 Actor Model](td3_actor_5000.pth)
 - Had troubles with implementing the .pth file for visualization and testing but it ran later.
 - The hopper landed some jumps but leaned a lot more than its limit, but later stabilized after few runs
 - Hopper started completing the terrain few times somewhere around 2500 episodes.
-- Was able to complete the terrain 7/10 times as seen [here](Results/td3_i2_run_5000.mp4).
+- Was able to complete the terrain 7/10 times after 5000 episodes as seen [here](Results/td3_i2_run_5000.mp4).
+- This step as it went, took the most time for completion along with implementing noisy layers but helped create a framework which was resued for all later iterations of the hopper.
+- Later, tried working with different hyperparameters but found these to be most stable so went along with these.
 ---
 # TD3 Agent for Hopper-v4 (Stable-Baselines3)
 
