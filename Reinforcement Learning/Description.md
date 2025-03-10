@@ -38,12 +38,12 @@ The implementation has tried to include features as asked in the assignment ques
 - Had troubles with implementing the .pth file for visualization and testing but it ran later.
 - The hopper landed some jumps but leaned a lot more than its limit, but later stabilized after few runs
 - Hopper started completing the terrain few times somewhere around 2500 episodes.
-- Was able to complete the terrain 7/10 times as seen [here](/Results/td3_i2_run_5000.mp4).
+- Was able to complete the terrain 7/10 times as seen [here](Results/td3_i2_run_5000.mp4).
 
 ---
 # TD3 Agent for Hopper-v4 (Stable-Baselines3)
 
-Also tried using Stable Baseline MLP Policy model to compare the two models and from a genral eye test, the custom model was working better for similar number of episodes(5000 each) but Stable Baseline model trained at a faster rate and the model was able to hop the terrain completely after 500000 episodes as seen [here](/Results/TD3_inital_run.mp4) with these [rewards](Results/Stable_Baseline_rewards_500000).
+Also tried using Stable Baseline MLP Policy model to compare the two models and from a genral eye test, the custom model was working better for similar number of episodes(5000 each) but Stable Baseline model trained at a faster rate and the model was able to hop the terrain completely after 500000 episodes as seen [here](Results/TD3_inital_run.mp4) with these [rewards](Results/Stable_Baseline_rewards_500000).
 
 [Stable_Baseline_Model](Stable_Baseline_model.py)
 
