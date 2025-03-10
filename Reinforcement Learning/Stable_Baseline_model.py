@@ -3,7 +3,6 @@ from stable_baselines3 import TD3
 from stable_baselines3.common.noise import NormalActionNoise
 import numpy as np
 
-
 env = gym.make("Hopper-v4")
 n_actions = env.action_space.shape[0]
 action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.1 * np.ones(n_actions))
@@ -48,4 +47,3 @@ while not done:
     obs, reward, done, _, _ = env.step(action)
 
 env.close()
-     
