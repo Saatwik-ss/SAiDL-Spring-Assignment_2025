@@ -28,6 +28,7 @@ class NoisyLinearBeta(nn.Module):
 
     def reset_parameters(self):
         bound = 1 / (self.in_features ** 0.5)
+        " Describes the bounds of the uniform distribution used to initialize weights and biases as [-1/root of features, 1/root of features] "
         self.weight_mu.data.uniform_(-bound, bound)
         self.weight_sigma.data.fill_(self.sigma_init)
         self.bias_mu.data.uniform_(-bound, bound)
