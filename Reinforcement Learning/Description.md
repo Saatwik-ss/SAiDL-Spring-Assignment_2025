@@ -13,7 +13,7 @@ Having previously worked with **Deep Double Q-Networks (DDQN)** in an **ERC proj
 Initially had troubles whit downloading MuJoco from the site or the pip commands(as suggested in open-ai spinning up) so used the gymnasium environment to work with and make the hopper.
 Rather than relying entirely on pre-built libraries, attempted to **implement the entire TD3 architecture from scratch** to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question. This approach allowed :  
 Modify individual components such as the actor-critic networks, noise models, and training loops.    
-Easily plug and play parts like different activation functions, optimizers, were tested and used and hyperparameters which worked best with the eye test were used.  
+Easily plug and play parts like different activation functions, optimizers, were tested and used and hyperparameters which looked best were used.  
 
 - By implementing TD3 from the ground up, was able to experiment with custom exploration strategies, loss functions, and network structures.
 - Model intially was very unstable and the rewards were very random, took some help from LLMs but the results were still similar even after many episodes and the model didn't work as expected.
@@ -55,3 +55,4 @@ Also tried using Stable Baseline MLP Policy model to compare the two models and 
 - Trains for **500,000 timesteps**
 ---
 
+# Implementing noisy layers
