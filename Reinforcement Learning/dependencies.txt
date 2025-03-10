@@ -1,0 +1,6 @@
+gymnasium == 1.0.0
+numpy == 2.2.3
+torch == 2.5.1+cu118
+matplotlib == 3.9.2
+Python == 3.12.8
+Mujoco == v4/v5
