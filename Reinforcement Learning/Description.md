@@ -56,3 +56,4 @@ Also tried using Stable Baseline MLP Policy model to compare the two models and 
 ---
 
 # Implementing noisy layers
+- Used [this repo](https://github.com/thomashirtz/noisy-networks/tree/main) to get a basic understanding on the implementation of noisy networks
