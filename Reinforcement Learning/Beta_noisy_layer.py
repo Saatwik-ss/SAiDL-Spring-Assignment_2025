@@ -193,6 +193,7 @@ for ep in range(num_episodes):
     state, _ = env.reset()
     episode_reward = 0
     for _ in range(1000):
+        agent.actor.reset_noise()
         action = agent.select_action(state)
         next_state, reward, done, _, _ = env.step(action)
         agent.store_transition(state, action, reward, next_state, done)
