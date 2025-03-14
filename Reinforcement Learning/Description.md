@@ -8,7 +8,7 @@ Having previously worked with **Deep Double Q-Networks (DDQN)** in an **ERC proj
 ## **Learning stage**  
 - Started with Saidl suggested resources like [Open-AI](https://spinningup.openai.com/en/latest/index.html) and **Reinforcement Learning: An Introduction by Sutton and Barto**.
 - Watched some youtube videos about RL mostly from the youtube channel https://www.youtube.com/@jekyllstein
-- [Glibberbot](https://gibberblot.github.io/)
+- [Gibberblot](https://gibberblot.github.io/)
    
 ### **Implementing TD3 from Scratch**  
 Initially had troubles whit downloading MuJoco from the site or the pip commands(as suggested in open-ai spinning up) so used the gymnasium environment to work with and make the hopper.
