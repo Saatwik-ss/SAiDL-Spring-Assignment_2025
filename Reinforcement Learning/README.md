@@ -49,30 +49,41 @@ $\pi_\theta: \mathbb{R}^n \to \mathbb{R}^m$
 that maximizes the expected return:
 
 $$
-J(\pi) = \mathbb{E}\left[\sum_{t=0}^\infty \gamma^t\, r(s_t, a_t)\right], \quad \gamma = 0.99.
+J(\pi) = \mathbb{E}\left[\sum_{t=0}^\infty \gamma^t\. r(s_t, a_t)\right], \quad \gamma = 0.99.
 $$
 
-## Critic Networks
-
-Two critic networks, $$Q_{\phi_1}$$ and $$Q_{\phi_2}$$, are used to mitigate overestimation bias. They are trained by minimizing the Bellman loss:
+**Critic Loss**: computes the target Q-value using the target actor and target critics.
 
 $$
-\min_{\phi_i} \, \mathbb{E}\left[\left(Q_{\phi_i}(s,a) - \left(r + \gamma\, \min_{j=1,2} Q_{\phi_j'}(s',\pi_{\theta'}(s'))\right)\right)^2\right].
+\mathcal{L}(\phi_i) = \mathbb{E} \left[ \left( Q_{\phi_i}(s, a) - \left( r + \gamma(1 - d) \min_{j=1,2} Q_{\phi_j^{\text{target}}}(s', \pi_{\theta^{\text{target}}}(s')) \right) \right)^2 \right]
 $$
 
-## Target Updates
 
-The actor and critic target networks are updated using soft updates:
+**Actor Loss**: The actor is updated to maximize the Q-value from the first critic:
 
 $$
-\theta' \leftarrow \tau\, \theta + (1-\tau)\,\theta', \quad \tau = 0.005.
+\mathcal{L}(\theta) = -\mathbb{E} \left[ Q_{\phi_1}(s, \pi_{\theta}(s)) \right]
 $$
 
-## Exploration
 
-Gaussian noise is added to the actions during training to encourage exploration in the continuous action space.
+**Target Networks**: Updated via Polyak averaging:
+
+$$
+\phi_j^{\text{target}} \gets \tau \phi_j + (1 - \tau) \phi_j^{\text{target}}
+$$
+
+$$
+\theta^{\text{target}} \gets \tau \theta + (1 - \tau) \theta^{\text{target}}
+$$
+
+**Exploration Noise**: Gaussian noise is added to actions during selection, which is clipped and decays over time:
+
+$$
+a_{\text{noisy}} = \text{clip}(\pi_{\theta}(s) + \epsilon, -a_{\max}, a_{\max}), \quad \epsilon \sim \mathcal{N}(0, \sigma)
+$$
 
 ---
+
 # TD3 Agent for Hopper-v4 (Stable-Baselines3)
 
 Also tried using Stable Baseline MLP Policy model to compare the two models and from a genral eye test, the custom model was working better for similar number of episodes(5000 each) but Stable Baseline model trained at a faster rate and the model was able to hop the terrain completely after 500000 episodes as seen [here](Results/TD3_inital_run.mp4) with these [rewards](Results/Stable_Baseline_rewards_500000.png).
@@ -117,4 +128,28 @@ $$
 
 where $\( \mu_w, \mu_b, \sigma_w, \sigma_b \)$ are learnable, and $\( \varepsilon_w, \varepsilon_b \)$ are random noise variables.  
 
+### Noise injection:
 
+Code for NoisyNets remains similar to that of TD3 with the addition of a noise class, for example,
+
+```python
+class Actor(nn.Module):
+    def __init__(self, state_dim, action_dim, max_action):
+        super(Actor, self).__init__()
+        self.fc1 = nn.Linear(state_dim, 256)
+        self.fc2 = nn.Linear(256, 256)
+        self.fc3 = nn.Linear(256, action_dim)
+        self.max_action = max_action
+```
+
+* becomes *
+
+```python
+class Actor(nn.Module):
+    def __init__(self, state_dim, action_dim, max_action):
+        nn.Module.__init__(self)
+        self.noisy1 = NoisyLinear(state_dim, 256)
+        self.noisy2 = NoisyLinear(256, 256)
+        self.noisy3 = NoisyLinear(256, action_dim)
+        self.max_action = max_action
+```
