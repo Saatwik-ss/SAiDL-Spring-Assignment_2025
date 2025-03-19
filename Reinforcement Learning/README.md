@@ -35,14 +35,43 @@ The implementation has tried to include features as asked in the assignment ques
 - **n-Step Returns** (Stabilizing Q-value estimation).
 - Random noise added for exploration.
 - Soft Target Updates (Polyak averaging).
-- **Residual Network Architecture for Actor-Critic**
 - [Download TD3 Actor Model](td3_actor_5000.pth)
-- Had troubles with implementing the .pth file for visualization and testing but it ran later.
 - The hopper landed some jumps but leaned a lot more than its limit, but later stabilized after few runs
 - Hopper started completing the terrain few times somewhere around 2500 episodes.
 - Was able to complete the terrain 7/10 times after 5000 episodes as seen [here](Results/td3_i2_run_5000.mp4).
 - This step as it went, took the most time for completion along with implementing noisy layers but helped create a framework which was resued for all later iterations of the hopper.
-- Later, tried working with different hyperparameters but found these to be most stable so went along with these.
+
+
+### TD3- working
+
+The goal was to make the Q value algorithem learn a deterministic policy 
+$\pi_\theta: \mathbb{R}^n \to \mathbb{R}^m$ 
+that maximizes the expected return:
+
+$$
+J(\pi) = \mathbb{E}\left[\sum_{t=0}^\infty \gamma^t\, r(s_t, a_t)\right], \quad \gamma = 0.99.
+$$
+
+## Critic Networks
+
+Two critic networks, $$Q_{\phi_1}$$ and $$Q_{\phi_2}$$, are used to mitigate overestimation bias. They are trained by minimizing the Bellman loss:
+
+$$
+\min_{\phi_i} \, \mathbb{E}\left[\left(Q_{\phi_i}(s,a) - \left(r + \gamma\, \min_{j=1,2} Q_{\phi_j'}(s',\pi_{\theta'}(s'))\right)\right)^2\right].
+$$
+
+## Target Updates
+
+The actor and critic target networks are updated using soft updates:
+
+$$
+\theta' \leftarrow \tau\, \theta + (1-\tau)\,\theta', \quad \tau = 0.005.
+$$
+
+## Exploration
+
+Gaussian noise is added to the actions during training to encourage exploration in the continuous action space.
+
 ---
 # TD3 Agent for Hopper-v4 (Stable-Baselines3)
 
