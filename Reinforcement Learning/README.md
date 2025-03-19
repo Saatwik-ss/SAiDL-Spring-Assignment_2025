@@ -9,7 +9,9 @@ Having previously worked with **Deep Double Q-Networks (DDQN)** in an **ERC proj
 - Started with Saidl suggested resources like [Open-AI](https://spinningup.openai.com/en/latest/index.html) and **Reinforcement Learning: An Introduction by Sutton and Barto**.
 - Watched some youtube videos about RL mostly from the youtube channel https://www.youtube.com/@jekyllstein
 - [Gibberblot](https://gibberblot.github.io/)
-   
+- Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron
+
+  
 ### **Implementing TD3 from Scratch**  
 Initially had troubles whit downloading MuJoco from the site or the pip commands(as suggested in open-ai spinning up) so used the gymnasium environment to work with and make the hopper.
 Rather than relying entirely on pre-built libraries, attempted to **implement the entire TD3 architecture from scratch** to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question. This approach allowed :  
