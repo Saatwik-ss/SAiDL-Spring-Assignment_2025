@@ -12,16 +12,16 @@ Having previously worked with **Deep Double Q-Networks (DDQN)** in an **ERC proj
 - Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron
 
   
-### **Implementing TD3 from Scratch**  
-Initially had troubles whit downloading MuJoco from the site or the pip commands(as suggested in open-ai spinning up) so used the gymnasium environment to work with and make the hopper.
-Rather than relying entirely on pre-built libraries, attempted to **implement the entire TD3 architecture from scratch** to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question. This approach allowed :  
-Modify individual components such as the actor-critic networks, noise models, and training loops.    
-Easily plug and play parts like different activation functions, optimizers, were tested and used and hyperparameters which looked best were used.  
+### **Implementing TD3 **  
+Attempted to implement the a basic TD3 architecture from scratch to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question.
 
-- By implementing TD3 from the ground up, was able to experiment with custom exploration strategies, loss functions, and network structures.
-- Model intially was very unstable and the rewards were very random, took some help from LLMs but the results were still similar even after many episodes and the model didn't work as expected.
+Attempted different iterations of TD3 with different actor-critics and training-testing loops and used the final one.
+
+different activation functions, optimizers, were tested and used and hyperparameters which looked best were used.  
+
+- Initial iterations were a bit unstable and the rewards were random but better tweaking helped make a more stable model.
 - Tried searching for implementation example with but couldn't find anything substantial.
-- Tried reading the gymnasium documemtation more deeply, till here i treated it just like the **ERC PROJECT** with rewards spelled out for different action spaces.
+- Read upon the papers of TD3 implementation.
 - Used the same Actor and Critic models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps(Training took extra time because i was adamant on using human render mode), the agent returned few jumps indicating that it was learning well at [this stage](initial_jump.mp4) .
 ---
 
