@@ -33,7 +33,6 @@ The implementation has tried to include features as asked in the assignment ques
 - **Delayed Policy Updates** (Actor updates less frequently than Critics)
 - **Prioritized Experience Replay (PER)** (Better sample efficiency).
 - **n-Step Returns** (Stabilizing Q-value estimation).
-- Custom reward function(achieved better results than default).
 - Random noise added for exploration.
 - Soft Target Updates (Polyak averaging).
 - **Residual Network Architecture for Actor-Critic**
