@@ -87,4 +87,34 @@ Also tried using Stable Baseline MLP Policy model to compare the two models and 
 ---
 
 # Implementing noisy layers
-- Used [this repo](https://github.com/thomashirtz/noisy-networks/tree/main) to get a basic understanding on the implementation of noisy networks
+- Used [this repo](https://github.com/thomashirtz/noisy-networks/tree/main) to get a basic understanding on the implementation of noisy networks.
+
+## NoisyNets: Parametric Noise in Neural Networks  
+
+In RL, agents learn by trying different actions and seeing the rewards they get. A crucial part of this is exploration, where the agent tries out new things to discover better strategies, rather than just sticking to what seems good so far. Traditional methods like ε-greedy (randomly choosing an action with some probability ε) often use simple, local randomness. The authors argue that these methods might not be enough to find complex behaviours needed for efficient exploration in many situation, to tackle this, Noisy networks are introduced in this [paper](https://arxiv.org/pdf/1706.10295) by DeepMind.
+
+
+NoisyNets add learnable noise directly to the weights of the neural network that the agent uses to make decisions
+
+
+NoisyNets are neural networks whose weights and biases are perturbed by a parametric function of the noise. These parameters are adapted with gradient descent. Given a neural network $\( y = f_{\theta}(x) \)$ with noisy parameters $\( \theta \)$, we define:  
+
+$$
+\theta = \mu + \Sigma \odot \varepsilon
+$$
+
+where $\( \mu, \Sigma \)$ are learnable parameters, $\( \varepsilon \)$ is zero-mean noise, and $\( \odot \)$ denotes element-wise multiplication. The loss is optimized over the expectation:  
+
+$$
+\bar{L}(\zeta) = \mathbb{E} [L(\theta)]
+$$
+
+For a linear layer with input $\( x \in \mathbb{R}^p \)$, weight $\( w \in \mathbb{R}^{q \times p} \)$, and bias $\( b \in \mathbb{R}^q \)$, the noisy version is:  
+
+$$
+y = (\mu_w + \sigma_w \odot \varepsilon_w)x + \mu_b + \sigma_b \odot \varepsilon_b
+$$
+
+where $\( \mu_w, \mu_b, \sigma_w, \sigma_b \)$ are learnable, and $\( \varepsilon_w, \varepsilon_b \)$ are random noise variables.  
+
+
