@@ -142,7 +142,7 @@ class Actor(nn.Module):
         self.max_action = max_action
 ```
 
-* becomes *
+becomes
 
 ```python
 class Actor(nn.Module):
@@ -153,3 +153,29 @@ class Actor(nn.Module):
         self.noisy3 = NoisyLinear(256, action_dim)
         self.max_action = max_action
 ```
+### Methods of injection-
+- Independent Gaussian noise:
+
+The noise applied to each weight and bias is independent, thus each layer has different-independent noise applied leading to $\( p + q \)$ noise variables (for p inputs to the layer and q outputs).
+
+
+- Factorized Gaussian noise:
+By factorising, instead of adding independent noise to each weight, a single randomly generated oise funct. is used to generate noise per input and output neuron.
+As explained in the paper, $\( \epsilon^w_{i,j} \)$ is factorized to $\( \epsilon^w_i \)$ and $\( \epsilon^w_j \)$ for input and output respectively(also for biass noise)
+
+Each $\( \epsilon^w_{i,j} \)$ and $\( \epsilon^b_j \)$  
+can then be written as:  
+
+$$
+\epsilon^w_{i,j} = f(\epsilon_i) f(\epsilon_j)
+$$
+
+$$
+\epsilon^b_j = f(\epsilon_j)
+$$
+
+where \( f \) is a real-valued function. In the experiments, \( f \) is used as
+
+$$
+f(x) = \text{sgn}(x) \sqrt{|x|}
+$$
