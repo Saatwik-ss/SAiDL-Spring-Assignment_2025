@@ -22,7 +22,7 @@ different activation functions, optimizers, were tested and used and hyperparame
 - Initial iterations were a bit unstable and the rewards were random but better tweaking helped make a more stable model.
 - Tried searching for implementation example with but couldn't find anything substantial.
 - Read upon the papers of TD3 implementation.
-- Used the same Actor and Critic models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps(Training took extra time because i was adamant on using human render mode), the agent returned few jumps indicating that it was learning well at [this stage](initial_jump.mp4) .
+- Used the same Actor and Critic models, took help of LLMs for the TD3 agent part of the code, applied training loop and tested the model after 500 training steps, the agent returned few jumps indicating that it was learning well at [this stage](initial_jump.mp4) .
 ---
 
 # Implementation Steps 
