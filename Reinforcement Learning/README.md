@@ -179,3 +179,6 @@ where \( f \) is a real-valued function. In the experiments, \( f \) is used as
 $$
 f(x) = \text{sgn}(x) \sqrt{|x|}
 $$
+
+- Monte Carlo method is employed to approximate the gradient of the loss function
+
