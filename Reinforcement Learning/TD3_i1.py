@@ -9,7 +9,9 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# ---------------------------- Actor and Critic -------------------------------- #
+
+
+
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action):
         super(Actor, self).__init__()
@@ -49,7 +51,10 @@ class Critic(nn.Module):
         q2 = self.fc6(q2)
         return q1, q2
 
-# ---------------------------- TD3 Agent -------------------------------- #
+
+
+
+
 class TD3Agent:
     def __init__(self, state_dim, action_dim, max_action, gamma=0.99, tau=0.005, actor_lr=3e-4, critic_lr=3e-4):
         self.gamma = gamma
@@ -120,12 +125,14 @@ class TD3Agent:
             self._soft_update(self.actor, self.actor_target)
             self._soft_update(self.critic, self.critic_target)
         self.policy_update_step += 1
-
     def _soft_update(self, local_model, target_model):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(self.tau * local_param.data + (1.0 - self.tau) * target_param.data)
 
-# ---------------------------- Environment Setup --------------------------------
+
+
+
+
 env = gym.make(
     "Hopper-v5",
     render_mode="human",
@@ -161,8 +168,9 @@ for ep in range(num_episodes):
     if (ep + 1) % save_interval == 0:
         torch.save(agent.actor.state_dict(), f"td3_actor_{ep+1}.pth")
         
-# ---------------------------- Testing Phase -------------------------------- #
-print("\n=== Testing Phase ===")
+
+
+print("\n=== Testing ===")
 agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_5000.pth"))
 agent.actor.eval()
 
