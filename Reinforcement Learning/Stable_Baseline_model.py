@@ -4,7 +4,10 @@ import torch
 from stable_baselines3 import TD3
 from stable_baselines3.common.noise import NormalActionNoise
 import matplotlib.pyplot as plt
-# ---------------------------- Environment Setup -------------------------------- #
+
+
+
+
 train_env = gym.make(
     "Hopper-v5",
     render_mode=None,
@@ -15,7 +18,10 @@ train_env = gym.make(
 )
 n_actions = train_env.action_space.shape[0]
 action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.1 * np.ones(n_actions))
-# ---------------------------- Model Setup ---------------------------------------- #
+
+
+
+
 model = TD3(
     "MlpPolicy",
     train_env,
@@ -33,12 +39,14 @@ model = TD3(
     device="cuda" if torch.cuda.is_available() else "cpu",
     tensorboard_log="./td3_hopper_tensorboard/",
 )
-# ---------------------------- Training Phase ------------------------------------- #
+
+
 total_timesteps = 500000
 model.learn(total_timesteps=total_timesteps)
 model.save("Pre_hopper_i10")
 train_env.close()
-# ---------------------------- Testing Phase -------------------------------------- #
+
+
 model = TD3.load(r"C:\Users\saatw\Pre_hopper_i10.zip")
 # Create testing environment (with rendering)
 test_env = gym.make(
