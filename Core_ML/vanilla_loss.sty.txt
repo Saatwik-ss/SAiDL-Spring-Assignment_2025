@@ -1,0 +1,368 @@
+
+Training on train_loader_1...
+Using NCE loss...
+Epoch [1/10], Train Loss: 1.5207, Train Acc: 0.4680, Test Acc: 0.6073
+Epoch [2/10], Train Loss: 1.1894, Train Acc: 0.6013, Test Acc: 0.6684
+Epoch [3/10], Train Loss: 1.0470, Train Acc: 0.6556, Test Acc: 0.7165
+Epoch [4/10], Train Loss: 0.9570, Train Acc: 0.6858, Test Acc: 0.7349
+Epoch [5/10], Train Loss: 0.8934, Train Acc: 0.7069, Test Acc: 0.7502
+Epoch [6/10], Train Loss: 0.8343, Train Acc: 0.7298, Test Acc: 0.7610
+Epoch [7/10], Train Loss: 0.7876, Train Acc: 0.7424, Test Acc: 0.7685
+Epoch [8/10], Train Loss: 0.7439, Train Acc: 0.7560, Test Acc: 0.7734
+Epoch [9/10], Train Loss: 0.6963, Train Acc: 0.7727, Test Acc: 0.7763
+Epoch [10/10], Train Loss: 0.6620, Train Acc: 0.7838, Test Acc: 0.7913
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0263, Train Acc: 0.3721, Test Acc: 0.4814
+Epoch [2/10], Train Loss: 0.0172, Train Acc: 0.4558, Test Acc: 0.5468
+Epoch [3/10], Train Loss: 0.0142, Train Acc: 0.4986, Test Acc: 0.5826
+Epoch [4/10], Train Loss: 0.0122, Train Acc: 0.5234, Test Acc: 0.5810
+Epoch [5/10], Train Loss: 0.0112, Train Acc: 0.5490, Test Acc: 0.5929
+Epoch [6/10], Train Loss: 0.0102, Train Acc: 0.5667, Test Acc: 0.6026
+Epoch [7/10], Train Loss: 0.0094, Train Acc: 0.5853, Test Acc: 0.6464
+Epoch [8/10], Train Loss: 0.0088, Train Acc: 0.5926, Test Acc: 0.6585
+Epoch [9/10], Train Loss: 0.0081, Train Acc: 0.6102, Test Acc: 0.6427
+Epoch [10/10], Train Loss: 0.0076, Train Acc: 0.6239, Test Acc: 0.6098
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.8176, Train Acc: 0.4244, Test Acc: 0.5374
+Epoch [2/10], Train Loss: 0.7219, Train Acc: 0.5361, Test Acc: 0.6199
+Epoch [3/10], Train Loss: 0.6676, Train Acc: 0.5903, Test Acc: 0.6602
+Epoch [4/10], Train Loss: 0.6260, Train Acc: 0.6276, Test Acc: 0.6765
+Epoch [5/10], Train Loss: 0.5969, Train Acc: 0.6514, Test Acc: 0.6916
+Epoch [6/10], Train Loss: 0.5699, Train Acc: 0.6728, Test Acc: 0.7142
+Epoch [7/10], Train Loss: 0.5481, Train Acc: 0.6916, Test Acc: 0.7070
+Epoch [8/10], Train Loss: 0.5246, Train Acc: 0.7070, Test Acc: 0.7299
+Epoch [9/10], Train Loss: 0.5047, Train Acc: 0.7202, Test Acc: 0.7392
+Epoch [10/10], Train Loss: 0.4888, Train Acc: 0.7319, Test Acc: 0.7550
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.4064, Train Acc: 0.2987, Test Acc: 0.3200
+Epoch [2/10], Train Loss: 1.3044, Train Acc: 0.3480, Test Acc: 0.2936
+Epoch [3/10], Train Loss: 1.2598, Train Acc: 0.3704, Test Acc: 0.3860
+Epoch [4/10], Train Loss: 1.2416, Train Acc: 0.3793, Test Acc: 0.3907
+Epoch [5/10], Train Loss: 1.2183, Train Acc: 0.3905, Test Acc: 0.4024
+Epoch [6/10], Train Loss: 1.2153, Train Acc: 0.3926, Test Acc: 0.4055
+Epoch [7/10], Train Loss: 1.2059, Train Acc: 0.3971, Test Acc: 0.4183
+Epoch [8/10], Train Loss: 1.1882, Train Acc: 0.4059, Test Acc: 0.4074
+Epoch [9/10], Train Loss: 1.2009, Train Acc: 0.3996, Test Acc: 0.4220
+Epoch [10/10], Train Loss: 1.1964, Train Acc: 0.4018, Test Acc: 0.4156
+
+Training on train_loader_2...
+Using NCE loss...
+Epoch [1/10], Train Loss: 1.5839, Train Acc: 0.4450, Test Acc: 0.5839
+Epoch [2/10], Train Loss: 1.2699, Train Acc: 0.5693, Test Acc: 0.6705
+Epoch [3/10], Train Loss: 1.1255, Train Acc: 0.6179, Test Acc: 0.6912
+Epoch [4/10], Train Loss: 1.0407, Train Acc: 0.6486, Test Acc: 0.7118
+Epoch [5/10], Train Loss: 0.9762, Train Acc: 0.6667, Test Acc: 0.7356
+Epoch [6/10], Train Loss: 0.9220, Train Acc: 0.6858, Test Acc: 0.7492
+Epoch [7/10], Train Loss: 0.8710, Train Acc: 0.7032, Test Acc: 0.7533
+Epoch [8/10], Train Loss: 0.8291, Train Acc: 0.7163, Test Acc: 0.7585
+Epoch [9/10], Train Loss: 0.7945, Train Acc: 0.7292, Test Acc: 0.7606
+Epoch [10/10], Train Loss: 0.7537, Train Acc: 0.7387, Test Acc: 0.7728
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0264, Train Acc: 0.3694, Test Acc: 0.4519
+Epoch [2/10], Train Loss: 0.0174, Train Acc: 0.4512, Test Acc: 0.5463
+Epoch [3/10], Train Loss: 0.0145, Train Acc: 0.4945, Test Acc: 0.5877
+Epoch [4/10], Train Loss: 0.0126, Train Acc: 0.5218, Test Acc: 0.5907
+Epoch [5/10], Train Loss: 0.0112, Train Acc: 0.5404, Test Acc: 0.6210
+Epoch [6/10], Train Loss: 0.0105, Train Acc: 0.5587, Test Acc: 0.6306
+Epoch [7/10], Train Loss: 0.0098, Train Acc: 0.5691, Test Acc: 0.6623
+Epoch [8/10], Train Loss: 0.0089, Train Acc: 0.5887, Test Acc: 0.6754
+Epoch [9/10], Train Loss: 0.0085, Train Acc: 0.5951, Test Acc: 0.6702
+Epoch [10/10], Train Loss: 0.0080, Train Acc: 0.6055, Test Acc: 0.6427
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.8346, Train Acc: 0.4019, Test Acc: 0.5427
+Epoch [2/10], Train Loss: 0.7400, Train Acc: 0.5205, Test Acc: 0.5996
+Epoch [3/10], Train Loss: 0.6786, Train Acc: 0.5729, Test Acc: 0.6428
+Epoch [4/10], Train Loss: 0.6436, Train Acc: 0.6077, Test Acc: 0.6972
+Epoch [5/10], Train Loss: 0.6118, Train Acc: 0.6328, Test Acc: 0.7055
+Epoch [6/10], Train Loss: 0.5900, Train Acc: 0.6507, Test Acc: 0.6734
+Epoch [7/10], Train Loss: 0.5724, Train Acc: 0.6648, Test Acc: 0.7102
+Epoch [8/10], Train Loss: 0.5522, Train Acc: 0.6797, Test Acc: 0.7378
+Epoch [9/10], Train Loss: 0.5364, Train Acc: 0.6921, Test Acc: 0.7374
+Epoch [10/10], Train Loss: 0.5210, Train Acc: 0.7009, Test Acc: 0.7544
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.4237, Train Acc: 0.2897, Test Acc: 0.3129
+Epoch [2/10], Train Loss: 1.3239, Train Acc: 0.3382, Test Acc: 0.3560
+Epoch [3/10], Train Loss: 1.3073, Train Acc: 0.3468, Test Acc: 0.3690
+Epoch [4/10], Train Loss: 1.2976, Train Acc: 0.3511, Test Acc: 0.2897
+Epoch [5/10], Train Loss: 1.2869, Train Acc: 0.3567, Test Acc: 0.3611
+Epoch [6/10], Train Loss: 1.2855, Train Acc: 0.3574, Test Acc: 0.3512
+Epoch [7/10], Train Loss: 1.2616, Train Acc: 0.3689, Test Acc: 0.3727
+Epoch [8/10], Train Loss: 1.2591, Train Acc: 0.3706, Test Acc: 0.3534
+Epoch [9/10], Train Loss: 1.2637, Train Acc: 0.3682, Test Acc: 0.3658
+Epoch [10/10], Train Loss: 1.2551, Train Acc: 0.3727, Test Acc: 0.3548
+
+Training on train_loader_3...
+Using NCE loss...
+Epoch [1/10], Train Loss: 1.6522, Train Acc: 0.4147, Test Acc: 0.5393
+Epoch [2/10], Train Loss: 1.3299, Train Acc: 0.5259, Test Acc: 0.6183
+Epoch [3/10], Train Loss: 1.2040, Train Acc: 0.5627, Test Acc: 0.5652
+Epoch [4/10], Train Loss: 1.1199, Train Acc: 0.5883, Test Acc: 0.6366
+Epoch [5/10], Train Loss: 1.0603, Train Acc: 0.6063, Test Acc: 0.6662
+Epoch [6/10], Train Loss: 1.0115, Train Acc: 0.6206, Test Acc: 0.6965
+Epoch [7/10], Train Loss: 0.9629, Train Acc: 0.6333, Test Acc: 0.7178
+Epoch [8/10], Train Loss: 0.9244, Train Acc: 0.6419, Test Acc: 0.6893
+Epoch [9/10], Train Loss: 0.8858, Train Acc: 0.6533, Test Acc: 0.7024
+Epoch [10/10], Train Loss: 0.8535, Train Acc: 0.6627, Test Acc: 0.7012
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0271, Train Acc: 0.3504, Test Acc: 0.4370
+Epoch [2/10], Train Loss: 0.0182, Train Acc: 0.4227, Test Acc: 0.4908
+Epoch [3/10], Train Loss: 0.0151, Train Acc: 0.4597, Test Acc: 0.5056
+Epoch [4/10], Train Loss: 0.0131, Train Acc: 0.4866, Test Acc: 0.5701
+Epoch [5/10], Train Loss: 0.0118, Train Acc: 0.5071, Test Acc: 0.5034
+Epoch [6/10], Train Loss: 0.0110, Train Acc: 0.5234, Test Acc: 0.5855
+Epoch [7/10], Train Loss: 0.0100, Train Acc: 0.5383, Test Acc: 0.5286
+Epoch [8/10], Train Loss: 0.0093, Train Acc: 0.5446, Test Acc: 0.5784
+Epoch [9/10], Train Loss: 0.0089, Train Acc: 0.5545, Test Acc: 0.5650
+Epoch [10/10], Train Loss: 0.0084, Train Acc: 0.5622, Test Acc: 0.6084
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.8423, Train Acc: 0.3852, Test Acc: 0.4628
+Epoch [2/10], Train Loss: 0.7588, Train Acc: 0.4807, Test Acc: 0.5002
+Epoch [3/10], Train Loss: 0.7118, Train Acc: 0.5236, Test Acc: 0.5962
+Epoch [4/10], Train Loss: 0.6794, Train Acc: 0.5477, Test Acc: 0.6187
+Epoch [5/10], Train Loss: 0.6547, Train Acc: 0.5713, Test Acc: 0.5975
+Epoch [6/10], Train Loss: 0.6351, Train Acc: 0.5839, Test Acc: 0.6237
+Epoch [7/10], Train Loss: 0.6168, Train Acc: 0.5961, Test Acc: 0.6471
+Epoch [8/10], Train Loss: 0.6029, Train Acc: 0.6050, Test Acc: 0.6831
+Epoch [9/10], Train Loss: 0.5876, Train Acc: 0.6196, Test Acc: 0.6788
+Epoch [10/10], Train Loss: 0.5748, Train Acc: 0.6273, Test Acc: 0.7149
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.4763, Train Acc: 0.2634, Test Acc: 0.2299
+Epoch [2/10], Train Loss: 1.4480, Train Acc: 0.2762, Test Acc: 0.2269
+Epoch [3/10], Train Loss: 1.4493, Train Acc: 0.2754, Test Acc: 0.2120
+Epoch [4/10], Train Loss: 1.4493, Train Acc: 0.2757, Test Acc: 0.2375
+Epoch [5/10], Train Loss: 1.4502, Train Acc: 0.2750, Test Acc: 0.2167
+Epoch [6/10], Train Loss: 1.4525, Train Acc: 0.2739, Test Acc: 0.2231
+Epoch [7/10], Train Loss: 1.4510, Train Acc: 0.2744, Test Acc: 0.2245
+Epoch [8/10], Train Loss: 1.4683, Train Acc: 0.2661, Test Acc: 0.2163
+Epoch [9/10], Train Loss: 1.4867, Train Acc: 0.2566, Test Acc: 0.2150
+Epoch [10/10], Train Loss: 1.4392, Train Acc: 0.2803, Test Acc: 0.2202
+
+Training on train_loader_4...
+Using NCE loss...
+Epoch [1/10], Train Loss: 2.1676, Train Acc: 0.2485, Test Acc: 0.4635
+Epoch [2/10], Train Loss: 2.0809, Train Acc: 0.3104, Test Acc: 0.5480
+Epoch [3/10], Train Loss: 2.0304, Train Acc: 0.3466, Test Acc: 0.6046
+Epoch [4/10], Train Loss: 1.9909, Train Acc: 0.3722, Test Acc: 0.6257
+Epoch [5/10], Train Loss: 1.9587, Train Acc: 0.3899, Test Acc: 0.6524
+Epoch [6/10], Train Loss: 1.9285, Train Acc: 0.4052, Test Acc: 0.6626
+Epoch [7/10], Train Loss: 1.8998, Train Acc: 0.4176, Test Acc: 0.6806
+Epoch [8/10], Train Loss: 1.8787, Train Acc: 0.4285, Test Acc: 0.7039
+Epoch [9/10], Train Loss: 1.8546, Train Acc: 0.4404, Test Acc: 0.6983
+Epoch [10/10], Train Loss: 1.8316, Train Acc: 0.4514, Test Acc: 0.7009
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0597, Train Acc: 0.2229, Test Acc: 0.3503
+Epoch [2/10], Train Loss: 0.0553, Train Acc: 0.2494, Test Acc: 0.4168
+Epoch [3/10], Train Loss: 0.0536, Train Acc: 0.2638, Test Acc: 0.4208
+Epoch [4/10], Train Loss: 0.0523, Train Acc: 0.2726, Test Acc: 0.4586
+Epoch [5/10], Train Loss: 0.0513, Train Acc: 0.2802, Test Acc: 0.4521
+Epoch [6/10], Train Loss: 0.0509, Train Acc: 0.2856, Test Acc: 0.4876
+Epoch [7/10], Train Loss: 0.0504, Train Acc: 0.2894, Test Acc: 0.4620
+Epoch [8/10], Train Loss: 0.0494, Train Acc: 0.2922, Test Acc: 0.4608
+Epoch [9/10], Train Loss: 0.0490, Train Acc: 0.2991, Test Acc: 0.4596
+Epoch [10/10], Train Loss: 0.0484, Train Acc: 0.3023, Test Acc: 0.4581
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.9260, Train Acc: 0.2396, Test Acc: 0.4373
+Epoch [2/10], Train Loss: 0.9107, Train Acc: 0.2955, Test Acc: 0.5060
+Epoch [3/10], Train Loss: 0.8997, Train Acc: 0.3278, Test Acc: 0.5385
+Epoch [4/10], Train Loss: 0.8919, Train Acc: 0.3483, Test Acc: 0.5869
+Epoch [5/10], Train Loss: 0.8830, Train Acc: 0.3656, Test Acc: 0.6127
+Epoch [6/10], Train Loss: 0.8747, Train Acc: 0.3842, Test Acc: 0.6260
+Epoch [7/10], Train Loss: 0.8670, Train Acc: 0.3970, Test Acc: 0.6629
+Epoch [8/10], Train Loss: 0.8607, Train Acc: 0.4083, Test Acc: 0.6738
+Epoch [9/10], Train Loss: 0.8536, Train Acc: 0.4162, Test Acc: 0.6515
+Epoch [10/10], Train Loss: 0.8477, Train Acc: 0.4271, Test Acc: 0.6875
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.6893, Train Acc: 0.1559, Test Acc: 0.1581
+Epoch [2/10], Train Loss: 1.6826, Train Acc: 0.1587, Test Acc: 0.1770
+Epoch [3/10], Train Loss: 1.6671, Train Acc: 0.1666, Test Acc: 0.2301
+Epoch [4/10], Train Loss: 1.6683, Train Acc: 0.1659, Test Acc: 0.2198
+Epoch [5/10], Train Loss: 1.6758, Train Acc: 0.1622, Test Acc: 0.2278
+Epoch [6/10], Train Loss: 1.6579, Train Acc: 0.1709, Test Acc: 0.2299
+Epoch [7/10], Train Loss: 1.6559, Train Acc: 0.1721, Test Acc: 0.2333
+Epoch [8/10], Train Loss: 1.6643, Train Acc: 0.1679, Test Acc: 0.2240
+Epoch [9/10], Train Loss: 1.6639, Train Acc: 0.1681, Test Acc: 0.2359
+Epoch [10/10], Train Loss: 1.6671, Train Acc: 0.1662, Test Acc: 0.2262
+
+Training on train_loader_5...
+Using NCE loss...
+Epoch [1/10], Train Loss: 2.2426, Train Acc: 0.2025, Test Acc: 0.4223
+Epoch [2/10], Train Loss: 2.1919, Train Acc: 0.2480, Test Acc: 0.5225
+Epoch [3/10], Train Loss: 2.1610, Train Acc: 0.2718, Test Acc: 0.5498
+Epoch [4/10], Train Loss: 2.1382, Train Acc: 0.2909, Test Acc: 0.5568
+Epoch [5/10], Train Loss: 2.1168, Train Acc: 0.3065, Test Acc: 0.6102
+Epoch [6/10], Train Loss: 2.0959, Train Acc: 0.3203, Test Acc: 0.6369
+Epoch [7/10], Train Loss: 2.0810, Train Acc: 0.3306, Test Acc: 0.6519
+Epoch [8/10], Train Loss: 2.0622, Train Acc: 0.3414, Test Acc: 0.6399
+Epoch [9/10], Train Loss: 2.0464, Train Acc: 0.3510, Test Acc: 0.6708
+Epoch [10/10], Train Loss: 2.0308, Train Acc: 0.3590, Test Acc: 0.6764
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0681, Train Acc: 0.1920, Test Acc: 0.3636
+Epoch [2/10], Train Loss: 0.0643, Train Acc: 0.2134, Test Acc: 0.4129
+Epoch [3/10], Train Loss: 0.0631, Train Acc: 0.2228, Test Acc: 0.4246
+Epoch [4/10], Train Loss: 0.0622, Train Acc: 0.2284, Test Acc: 0.4105
+Epoch [5/10], Train Loss: 0.0617, Train Acc: 0.2295, Test Acc: 0.4185
+Epoch [6/10], Train Loss: 0.0610, Train Acc: 0.2364, Test Acc: 0.4618
+Epoch [7/10], Train Loss: 0.0603, Train Acc: 0.2416, Test Acc: 0.4664
+Epoch [8/10], Train Loss: 0.0601, Train Acc: 0.2405, Test Acc: 0.4351
+Epoch [9/10], Train Loss: 0.0598, Train Acc: 0.2393, Test Acc: 0.4708
+Epoch [10/10], Train Loss: 0.0586, Train Acc: 0.2444, Test Acc: 0.4220
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.9376, Train Acc: 0.1954, Test Acc: 0.3879
+Epoch [2/10], Train Loss: 0.9290, Train Acc: 0.2414, Test Acc: 0.4977
+Epoch [3/10], Train Loss: 0.9235, Train Acc: 0.2619, Test Acc: 0.5429
+Epoch [4/10], Train Loss: 0.9182, Train Acc: 0.2787, Test Acc: 0.5322
+Epoch [5/10], Train Loss: 0.9147, Train Acc: 0.2900, Test Acc: 0.5934
+Epoch [6/10], Train Loss: 0.9100, Train Acc: 0.3046, Test Acc: 0.5820
+Epoch [7/10], Train Loss: 0.9059, Train Acc: 0.3154, Test Acc: 0.6162
+Epoch [8/10], Train Loss: 0.9014, Train Acc: 0.3253, Test Acc: 0.6214
+Epoch [9/10], Train Loss: 0.8965, Train Acc: 0.3363, Test Acc: 0.6294
+Epoch [10/10], Train Loss: 0.8933, Train Acc: 0.3395, Test Acc: 0.6424
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.7387, Train Acc: 0.1308, Test Acc: 0.1650
+Epoch [2/10], Train Loss: 1.7568, Train Acc: 0.1215, Test Acc: 0.1664
+Epoch [3/10], Train Loss: 1.7410, Train Acc: 0.1297, Test Acc: 0.1688
+Epoch [4/10], Train Loss: 1.7342, Train Acc: 0.1330, Test Acc: 0.1697
+Epoch [5/10], Train Loss: 1.7797, Train Acc: 0.1102, Test Acc: 0.1000
+Epoch [6/10], Train Loss: 1.7973, Train Acc: 0.1014, Test Acc: 0.1000
+Epoch [7/10], Train Loss: 1.7974, Train Acc: 0.1014, Test Acc: 0.1000
+Epoch [8/10], Train Loss: 1.7973, Train Acc: 0.1014, Test Acc: 0.1000
+Epoch [9/10], Train Loss: 1.7972, Train Acc: 0.1014, Test Acc: 0.1000
+Epoch [10/10], Train Loss: 1.7711, Train Acc: 0.1142, Test Acc: 0.1679
+
+Training on train_loader_6...
+Using NCE loss...
+Epoch [1/10], Train Loss: 2.2944, Train Acc: 0.1579, Test Acc: 0.3785
+Epoch [2/10], Train Loss: 2.2659, Train Acc: 0.1913, Test Acc: 0.4367
+Epoch [3/10], Train Loss: 2.2510, Train Acc: 0.2071, Test Acc: 0.4962
+Epoch [4/10], Train Loss: 2.2362, Train Acc: 0.2198, Test Acc: 0.4875
+Epoch [5/10], Train Loss: 2.2255, Train Acc: 0.2302, Test Acc: 0.5212
+Epoch [6/10], Train Loss: 2.2145, Train Acc: 0.2398, Test Acc: 0.5771
+Epoch [7/10], Train Loss: 2.2050, Train Acc: 0.2471, Test Acc: 0.5769
+Epoch [8/10], Train Loss: 2.1922, Train Acc: 0.2582, Test Acc: 0.5920
+Epoch [9/10], Train Loss: 2.1836, Train Acc: 0.2644, Test Acc: 0.5940
+Epoch [10/10], Train Loss: 2.1747, Train Acc: 0.2686, Test Acc: 0.6161
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0749, Train Acc: 0.1545, Test Acc: 0.3771
+Epoch [2/10], Train Loss: 0.0721, Train Acc: 0.1745, Test Acc: 0.3482
+Epoch [3/10], Train Loss: 0.0711, Train Acc: 0.1807, Test Acc: 0.3828
+Epoch [4/10], Train Loss: 0.0704, Train Acc: 0.1874, Test Acc: 0.4093
+Epoch [5/10], Train Loss: 0.0702, Train Acc: 0.1892, Test Acc: 0.3677
+Epoch [6/10], Train Loss: 0.0699, Train Acc: 0.1909, Test Acc: 0.4110
+Epoch [7/10], Train Loss: 0.0692, Train Acc: 0.1937, Test Acc: 0.4039
+Epoch [8/10], Train Loss: 0.0694, Train Acc: 0.1966, Test Acc: 0.4244
+Epoch [9/10], Train Loss: 0.0683, Train Acc: 0.1989, Test Acc: 0.3708
+Epoch [10/10], Train Loss: 0.0681, Train Acc: 0.1983, Test Acc: 0.4148
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.9439, Train Acc: 0.1555, Test Acc: 0.3784
+Epoch [2/10], Train Loss: 0.9403, Train Acc: 0.1861, Test Acc: 0.4201
+Epoch [3/10], Train Loss: 0.9372, Train Acc: 0.2054, Test Acc: 0.4668
+Epoch [4/10], Train Loss: 0.9352, Train Acc: 0.2169, Test Acc: 0.5196
+Epoch [5/10], Train Loss: 0.9328, Train Acc: 0.2260, Test Acc: 0.5336
+Epoch [6/10], Train Loss: 0.9313, Train Acc: 0.2323, Test Acc: 0.4884
+Epoch [7/10], Train Loss: 0.9292, Train Acc: 0.2391, Test Acc: 0.5876
+Epoch [8/10], Train Loss: 0.9274, Train Acc: 0.2443, Test Acc: 0.5832
+Epoch [9/10], Train Loss: 0.9251, Train Acc: 0.2538, Test Acc: 0.5912
+Epoch [10/10], Train Loss: 0.9230, Train Acc: 0.2577, Test Acc: 0.5794
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.7608, Train Acc: 0.1195, Test Acc: 0.1987
+Epoch [2/10], Train Loss: 1.7389, Train Acc: 0.1303, Test Acc: 0.1853
+Epoch [3/10], Train Loss: 1.7463, Train Acc: 0.1269, Test Acc: 0.1716
+Epoch [4/10], Train Loss: 1.7537, Train Acc: 0.1234, Test Acc: 0.1723
+Epoch [5/10], Train Loss: 1.7437, Train Acc: 0.1280, Test Acc: 0.2165
+Epoch [6/10], Train Loss: 1.7554, Train Acc: 0.1224, Test Acc: 0.2035
+Epoch [7/10], Train Loss: 1.7383, Train Acc: 0.1308, Test Acc: 0.1841
+Epoch [8/10], Train Loss: 1.7436, Train Acc: 0.1282, Test Acc: 0.1578
+Epoch [9/10], Train Loss: 1.7476, Train Acc: 0.1261, Test Acc: 0.1854
+Epoch [10/10], Train Loss: 1.7449, Train Acc: 0.1276, Test Acc: 0.1846
+
+Training on train_loader_7...
+Using NCE loss...
+Epoch [1/10], Train Loss: 2.3226, Train Acc: 0.1225, Test Acc: 0.2551
+Epoch [2/10], Train Loss: 2.3149, Train Acc: 0.1308, Test Acc: 0.3005
+Epoch [3/10], Train Loss: 2.3091, Train Acc: 0.1418, Test Acc: 0.3791
+Epoch [4/10], Train Loss: 2.3040, Train Acc: 0.1484, Test Acc: 0.4174
+Epoch [5/10], Train Loss: 2.3005, Train Acc: 0.1542, Test Acc: 0.3657
+Epoch [6/10], Train Loss: 2.2982, Train Acc: 0.1569, Test Acc: 0.4406
+Epoch [7/10], Train Loss: 2.2933, Train Acc: 0.1644, Test Acc: 0.4610
+Epoch [8/10], Train Loss: 2.2892, Train Acc: 0.1667, Test Acc: 0.4721
+Epoch [9/10], Train Loss: 2.2861, Train Acc: 0.1713, Test Acc: 0.4931
+Epoch [10/10], Train Loss: 2.2823, Train Acc: 0.1745, Test Acc: 0.4747
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0797, Train Acc: 0.1258, Test Acc: 0.3190
+Epoch [2/10], Train Loss: 0.0785, Train Acc: 0.1415, Test Acc: 0.3708
+Epoch [3/10], Train Loss: 0.0780, Train Acc: 0.1456, Test Acc: 0.3255
+Epoch [4/10], Train Loss: 0.0776, Train Acc: 0.1533, Test Acc: 0.3856
+Epoch [5/10], Train Loss: 0.0773, Train Acc: 0.1577, Test Acc: 0.4004
+Epoch [6/10], Train Loss: 0.0768, Train Acc: 0.1617, Test Acc: 0.4198
+Epoch [7/10], Train Loss: 0.0767, Train Acc: 0.1612, Test Acc: 0.4306
+Epoch [8/10], Train Loss: 0.0763, Train Acc: 0.1648, Test Acc: 0.4530
+Epoch [9/10], Train Loss: 0.0759, Train Acc: 0.1696, Test Acc: 0.4550
+Epoch [10/10], Train Loss: 0.0755, Train Acc: 0.1720, Test Acc: 0.4392
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.9479, Train Acc: 0.1174, Test Acc: 0.2521
+Epoch [2/10], Train Loss: 0.9471, Train Acc: 0.1252, Test Acc: 0.2840
+Epoch [3/10], Train Loss: 0.9464, Train Acc: 0.1367, Test Acc: 0.3083
+Epoch [4/10], Train Loss: 0.9459, Train Acc: 0.1401, Test Acc: 0.3705
+Epoch [5/10], Train Loss: 0.9453, Train Acc: 0.1454, Test Acc: 0.3696
+Epoch [6/10], Train Loss: 0.9449, Train Acc: 0.1480, Test Acc: 0.4061
+Epoch [7/10], Train Loss: 0.9445, Train Acc: 0.1509, Test Acc: 0.4050
+Epoch [8/10], Train Loss: 0.9442, Train Acc: 0.1536, Test Acc: 0.4292
+Epoch [9/10], Train Loss: 0.9436, Train Acc: 0.1581, Test Acc: 0.4418
+Epoch [10/10], Train Loss: 0.9433, Train Acc: 0.1603, Test Acc: 0.4283
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.7900, Train Acc: 0.1047, Test Acc: 0.1524
+Epoch [2/10], Train Loss: 1.7806, Train Acc: 0.1097, Test Acc: 0.1681
+Epoch [3/10], Train Loss: 1.7701, Train Acc: 0.1150, Test Acc: 0.1622
+Epoch [4/10], Train Loss: 1.7695, Train Acc: 0.1154, Test Acc: 0.1205
+Epoch [5/10], Train Loss: 1.7789, Train Acc: 0.1106, Test Acc: 0.1928
+Epoch [6/10], Train Loss: 1.7579, Train Acc: 0.1210, Test Acc: 0.1899
+Epoch [7/10], Train Loss: 1.7582, Train Acc: 0.1210, Test Acc: 0.1756
+Epoch [8/10], Train Loss: 1.7714, Train Acc: 0.1144, Test Acc: 0.1817
+Epoch [9/10], Train Loss: 1.7738, Train Acc: 0.1132, Test Acc: 0.1548
+Epoch [10/10], Train Loss: 1.7717, Train Acc: 0.1142, Test Acc: 0.1669
+
+Training on train_loader_8...
+Using NCE loss...
+Epoch [1/10], Train Loss: 2.3296, Train Acc: 0.1028, Test Acc: 0.1459
+Epoch [2/10], Train Loss: 2.3267, Train Acc: 0.1059, Test Acc: 0.1164
+Epoch [3/10], Train Loss: 2.3266, Train Acc: 0.1027, Test Acc: 0.1633
+Epoch [4/10], Train Loss: 2.3268, Train Acc: 0.1023, Test Acc: 0.1319
+Epoch [5/10], Train Loss: 2.3269, Train Acc: 0.1010, Test Acc: 0.0998
+Epoch [6/10], Train Loss: 2.3271, Train Acc: 0.0998, Test Acc: 0.1019
+Epoch [7/10], Train Loss: 2.3270, Train Acc: 0.1024, Test Acc: 0.1384
+Epoch [8/10], Train Loss: 2.3269, Train Acc: 0.1024, Test Acc: 0.1301
+Epoch [9/10], Train Loss: 2.3269, Train Acc: 0.1020, Test Acc: 0.1348
+Epoch [10/10], Train Loss: 2.3268, Train Acc: 0.1029, Test Acc: 0.1464
+Using NFL loss...
+Epoch [1/10], Train Loss: 0.0811, Train Acc: 0.1044, Test Acc: 0.1082
+Epoch [2/10], Train Loss: 0.0810, Train Acc: 0.1011, Test Acc: 0.1000
+Epoch [3/10], Train Loss: 0.0810, Train Acc: 0.1018, Test Acc: 0.1212
+Epoch [4/10], Train Loss: 0.0809, Train Acc: 0.1026, Test Acc: 0.1288
+Epoch [5/10], Train Loss: 0.0809, Train Acc: 0.1010, Test Acc: 0.0980
+Epoch [6/10], Train Loss: 0.0809, Train Acc: 0.1044, Test Acc: 0.1626
+Epoch [7/10], Train Loss: 0.0808, Train Acc: 0.1048, Test Acc: 0.1545
+Epoch [8/10], Train Loss: 0.0808, Train Acc: 0.1075, Test Acc: 0.1730
+Epoch [9/10], Train Loss: 0.0808, Train Acc: 0.1064, Test Acc: 0.1955
+Epoch [10/10], Train Loss: 0.0807, Train Acc: 0.1078, Test Acc: 0.1664
+Using RCE loss...
+Epoch [1/10], Train Loss: 0.9486, Train Acc: 0.1035, Test Acc: 0.1249
+Epoch [2/10], Train Loss: 0.9482, Train Acc: 0.1033, Test Acc: 0.1337
+Epoch [3/10], Train Loss: 0.9482, Train Acc: 0.1043, Test Acc: 0.1900
+Epoch [4/10], Train Loss: 0.9482, Train Acc: 0.1061, Test Acc: 0.1742
+Epoch [5/10], Train Loss: 0.9481, Train Acc: 0.1066, Test Acc: 0.1919
+Epoch [6/10], Train Loss: 0.9481, Train Acc: 0.1061, Test Acc: 0.1910
+Epoch [7/10], Train Loss: 0.9481, Train Acc: 0.1074, Test Acc: 0.1843
+Epoch [8/10], Train Loss: 0.9481, Train Acc: 0.1089, Test Acc: 0.2008
+Epoch [9/10], Train Loss: 0.9480, Train Acc: 0.1099, Test Acc: 0.2090
+Epoch [10/10], Train Loss: 0.9479, Train Acc: 0.1113, Test Acc: 0.2092
+Using MAE loss...
+Epoch [1/10], Train Loss: 1.7961, Train Acc: 0.1019, Test Acc: 0.0958
+Epoch [2/10], Train Loss: 1.7971, Train Acc: 0.1019, Test Acc: 0.1000
+Epoch [3/10], Train Loss: 1.7988, Train Acc: 0.1006, Test Acc: 0.1118
+Epoch [4/10], Train Loss: 1.8006, Train Acc: 0.0998, Test Acc: 0.1000
+Epoch [5/10], Train Loss: 1.8001, Train Acc: 0.0998, Test Acc: 0.1000
+Epoch [6/10], Train Loss: 1.8003, Train Acc: 0.0998, Test Acc: 0.1000
+Epoch [7/10], Train Loss: 1.8005, Train Acc: 0.0998, Test Acc: 0.1000
+Epoch [8/10], Train Loss: 1.8002, Train Acc: 0.0998, Test Acc: 0.1000
+Epoch [9/10], Train Loss: 1.8006, Train Acc: 0.0998, Test Acc: 0.1000
+Epoch [10/10], Train Loss: 1.8005, Train Acc: 0.0998, Test Acc: 0.1000
