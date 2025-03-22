@@ -7,7 +7,10 @@ import torch.nn.functional as F
 import random
 import matplotlib.pyplot as plt
 
-# -------------------------Gamma Noise ---------------------------#
+
+
+
+
 class NoisyLinearGamma(nn.Module):
     def __init__(self, in_features, out_features, sigma_init=0.02):
         nn.Module.__init__(self)
@@ -55,7 +58,10 @@ class NoisyLinearGamma(nn.Module):
         x = gamma_dist.sample((size,)).squeeze()
         return x - shape * scale
 
-# -------------------------------- Actor & Critic -------------------------------- #
+
+
+
+
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action):
         nn.Module.__init__(self)
@@ -94,7 +100,10 @@ class Critic(nn.Module):
         q2 = self.fc6(q2)
         return q2, q1
 
-# ------------------------------ TD3 Agent ----------------------------------- #
+
+
+
+
 class TD3Agent:
     def __init__(self, state_dim, action_dim, max_action, gamma=0.99, tau=0.005):
         self.gamma = gamma
@@ -168,7 +177,9 @@ class TD3Agent:
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(self.tau * local_param.data + (1.0 - self.tau) * target_param.data)
 
-# ---------------------------- Environment Setup -------------------------------- #
+
+
+
 env = gym.make(
     "Hopper-v5",
     render_mode= "human",
@@ -183,7 +194,9 @@ action_dim = env.action_space.shape[0]
 max_action = float(env.action_space.high[0])
 agent = TD3Agent(state_dim, action_dim, max_action)
 
-# ---------------------------- Training Phase ------------------------------------ #
+
+
+
 
 num_episodes = 1200
 save_interval = 600
@@ -204,7 +217,8 @@ for ep in range(num_episodes):
     if (ep + 1) % save_interval == 0:
         torch.save(agent.actor.state_dict(), f"td3_actor_gamma_{ep+1}.pth")
 
-# ---------------------------- Testing Phase -------------------------------- #
+
+
 print("\n=== Testing Phase ===")
 agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_noisy_gamma_1200.pth"))
 agent.actor.eval()
