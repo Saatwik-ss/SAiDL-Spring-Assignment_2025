@@ -42,6 +42,8 @@ Other important features and methodology is added along with the code in the jup
 - **Comparison**:
   - Normalized losses outperform vanilla losses in high-noise settings.
   - APL balances robustness and accuracy, mitigating underfitting while remaining noise-resistant.
+ 
+- Train and Test accuracy and Loss for each dataset on every Loss function has been attached as well.
 
 ---
 
