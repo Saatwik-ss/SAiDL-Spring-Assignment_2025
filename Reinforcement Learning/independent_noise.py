@@ -65,9 +65,9 @@ class IndependentNoisyLayer(nn.Module):
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action):
         super(Actor, self).__init__()
-        self.fc1 = IndependentNoisyLayer(state_dim, 11)
-        self.fc2 = IndependentNoisyLayer(11, 11)
-        self.fc3 = IndependentNoisyLayer(11, action_dim)
+        self.fc1 = IndependentNoisyLayer(state_dim, 16)
+        self.fc2 = IndependentNoisyLayer(16, 16)
+        self.fc3 = IndependentNoisyLayer(16, action_dim)
         self.max_action = max_action
 
     def forward(self, state):
