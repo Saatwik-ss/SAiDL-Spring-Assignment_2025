@@ -52,8 +52,8 @@ This study shows that **normalized losses improve robustness**, but can suffer f
 
 ---
 
-## **Bonus: Asymmetric Noise Experiment**
-We extend the study to **asymmetric noise** (\( \eta \in [0.1, 0.4] \)), confirming that:
+# Bonus: Asymmetric Noise Experiment
+We extend the study to asymmetric noise $(\( \eta \in [0.1, 0.4] \))$, confirming that:
 - Normalized losses remain robust but suffer from underfitting.
 - APL still effectively balances performance and robustness.
 - Asymmetric noise impacts performance **less severely** than symmetric noise.
@@ -63,7 +63,8 @@ We extend the study to **asymmetric noise** (\( \eta \in [0.1, 0.4] \)), confirm
 ## **Future Work**
 Further research could explore:
 - Combining APL with **confidence-based sample selection**.
-- Extending experiments to **larger datasets** like CIFAR-100.
-- Applying these techniques to **semi-supervised learning** scenarios.
+- Extending experiments to **larger datasets** like CIFAR-100 and Imagenet.
+- (Later addition) APL gave better results than SCEL on CIFAR 100 on moderate noise while SCEL overtook it and was able to give satisfying accuracy in similar or higher noise contexts
+- Applying these techniques to semi-supervised learning or unsupervised learning scenarios, also a loss function that converges extremely fast would be ideal for PINNs.
 
 ---
