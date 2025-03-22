@@ -8,7 +8,8 @@ import random
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-# ---------------------------- NoisyLinear Definition ----------------------------
+
+
 class NoisyLinear(nn.Module):
     def __init__(self, in_features, out_features, sigma_init=0.017):
         nn.Module.__init__(self)
@@ -55,7 +56,8 @@ class NoisyLinear(nn.Module):
         return x.sign().mul(x.abs().sqrt())
 
 
-# ---------------------------- Actor & Critic Definitions ----------------------------
+
+
 class Actor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action):
         nn.Module.__init__(self)
@@ -96,7 +98,8 @@ class Critic(nn.Module):
         return q1,q2;
 
 
-# ---------------------------- TD3 Agent ---------------------------- #
+
+
 class TD3Agent:
     def __init__(self, state_dim, action_dim, max_action, gamma=0.99, tau=0.005, actor_lr=3e-4, critic_lr=3e-4):
         self.gamma = gamma
@@ -171,7 +174,7 @@ class TD3Agent:
             target_param.data.copy_(self.tau * local_param.data + (1.0 - self.tau) * target_param.data)
 
 
-# ---------------------------- Environment Setup ---------------------------- #
+
 env = gym.make(
     "Hopper-v5",
     render_mode="human",
@@ -186,7 +189,7 @@ action_dim = env.action_space.shape[0]
 max_action = float(env.action_space.high[0])
 agent = TD3Agent(state_dim, action_dim, max_action)
 
-# ---------------------------- Training Phase ----------------------------
+
 num_episodes = 1200
 save_interval = 600
 for episode in range(num_episodes):
@@ -209,7 +212,7 @@ for episode in range(num_episodes):
         torch.save(agent.actor.state_dict(), f"td3_actor_gaussian_{episode+1}.pth")
 
         
-# ---------------------------- Testing Phase ----------------------------
+
 print("\n=== Starting Testing Phase ===")
 
 agent.actor.load_state_dict(torch.load(r"C:\Users\saatw\td3_actor_gaussian_1200.pth"))
@@ -241,7 +244,6 @@ print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f
 env.close()
 
 
-# ---------------------------- Reward Chart ----------------------------# 
 plt.figure(figsize=(8, 5))
 plt.plot(range(1, num_test_episodes + 1), total_rewards, marker='o', linestyle='-', color='g', alpha=0.7)
 plt.xlabel("Test Episode")
