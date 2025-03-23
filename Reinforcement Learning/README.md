@@ -188,4 +188,11 @@ $$
 - Initial iterations were again bit random in terms of rewards and time taken to train and the hopper couldn't complete the jumps.
 - Also started factorized noise part while doing this.
 - Introduces independent Gaussian noise into actor params. Unlike traditional action noise, it perturbs weights and biases directly. trainable noise parameters 
- include sigma_weight, sigma_bias
+ include sigma_weight, sigma_bias.
+
+---
+
+### Factorized Noise: 
+
+- Factorized noise reduces the number of noise parameters while maintaining exploration benefits.
+- Applyies independent Gaussian noise to each weight and bias, factorized noise samples two lower-dimensional noise vectors, one for input and one for output. These are then combined multiplicatively to form a full noise matrix as described above.
