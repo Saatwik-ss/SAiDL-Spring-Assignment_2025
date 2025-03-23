@@ -186,4 +186,6 @@ $$
 
 - Initially started with implementing Independent noise as it appeared more easier to understand and get feel of.
 - Initial iterations were again bit random in terms of rewards and time taken to train and the hopper couldn't complete the jumps.
-- 
+- Also started factorized noise part while doing this.
+- Introduces independent Gaussian noise into actor params. Unlike traditional action noise, it perturbs weights and biases directly. trainable noise parameters 
+ include sigma_weight, sigma_bias
