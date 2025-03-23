@@ -165,7 +165,3 @@ while not game_over:
                 board = GameBoard.create_board()
                 move_list = []
                 GameBoard.draw_board(board, move_list)
-
-
-for i in move_list:
-    print(i)
