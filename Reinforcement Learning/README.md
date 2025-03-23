@@ -211,4 +211,12 @@ $$
 ![Screenshot 2025-03-24 021143](https://github.com/user-attachments/assets/a23a773c-bdc8-486a-89b0-26f7dce38c6f)
 
 
+## 2-b:) How would you test the adversarial robustness of your setup? Would the performance be affected by different encoder blocks (CNNs, Attention Heads) 
+
+- Adversial robustness will be tested by using adversiarial attacks during the testing phase of the hopper. FGSM is a common method to act out such adversarial attacks.
+- CNN policy was implemented by creating an episode by episode changing 3-D matrix which consisted of state, rewards and actions,this was done since CNNs are used for image processing and higher dim. data, using CNNs for a mujoco env. did not appear to be ideal for this task. Mujoco env. instead use low dimensional(1D or 2D) data but they use a lot of them for action spaces and state spaces and rewards, so combinging these low dimensional data and mapping each state to its state, action and sunbequent reward can be done and i can hoped that the CNN can map out some sort of pattern in the data and learn from it. 3D matrix like an RGB array was created for this task. However state and actions are of different sizes so to create proper order lots of mutations and paddings were done and the reward could not cross 50 hence the implementation is not attached.
+- How can a transformer be applied to this task was a thoughtful question since transformers are used for NLP tasks and other feature of transformers like positional embeddings which is redundant anyways for this case and multi head attention did not appear ideal.
+- A Vit and CNN architecture which captured the image of hopper in human render_mode can  be used and it might be embedded with a reward function and it can learn how to distinguish between healthy and unhealthy states can be used and might achieve good results however i couldn;t get the opportunity to try it out as well could not find a base to start with .
+- RGB_render mode exists but could not find how to use it for this task hence ending this portion of the assignment for me.
+---
 
