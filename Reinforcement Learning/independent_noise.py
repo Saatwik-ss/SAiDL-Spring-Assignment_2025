@@ -15,6 +15,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class IndependentNoisyLayer(nn.Module):
     #applies noise independently to each weight and bias
     
+
     
     def __init__(self, in_features: int, out_features: int, sigma: float = 0.017):
         super().__init__()
@@ -59,6 +60,26 @@ class IndependentNoisyLayer(nn.Module):
 
 
 
+# nn.Module:	   
+# Base class for neural networks.
+# torch.empty(shape):
+# Creates an uninitialized tensor.
+# torch.full(shape, value):	
+# Creates a tensor filled with a constant value.
+# nn.Parameter(tensor):	
+# Registers tensor as a trainable parameter.
+# self.register_buffer(name, tensor):
+# Registers tensor as a non-trainable model state.
+# torch.zeros(shape):	
+# Creates a tensor of zeros.
+# with torch.no_grad():	
+# Prevents gradient tracking (for efficiency).
+# tensor.normal_():	
+# Replaces tensor with samples from a standard normal distribution.
+# nn.init.uniform_(tensor, a, b):
+# Initializes tensor from a uniform distribution.
+# F.linear(input, weight, bias): 
+# Standard fully connected (linear) layer."'
 
 
 
@@ -176,6 +197,7 @@ class TD3Agent:
             self._soft_update(self.actor, self.actor_target)
             self._soft_update(self.critic, self.critic_target)
         self.policy_update_step += 1
+        return state,actions,rewards
 
     def _soft_update(self, local_model, target_model):
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
@@ -186,7 +208,7 @@ class TD3Agent:
 
 env = gym.make(
     "Hopper-v5",
-    render_mode="human",
+    render_mode="rgb_array",
     forward_reward_weight=10.0,
     ctrl_cost_weight=0.005,
     healthy_reward=2.0,
@@ -203,6 +225,7 @@ num_episodes = 5000
 save_interval = 2500
 
 for ep in range(num_episodes):
+
     state, _ = env.reset()
     episode_reward = 0
     for _ in range(1000):
@@ -210,6 +233,7 @@ for ep in range(num_episodes):
         next_state, reward, done, _, _ = env.step(action)
         agent.store_transition(state, action, reward, next_state, done)
         agent.train()
+        print(env.observation_space.shape)
         state = next_state
         episode_reward += reward
         if done: break
