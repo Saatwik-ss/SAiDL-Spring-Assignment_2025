@@ -220,3 +220,4 @@ $$
 - RGB_render mode exists but could not find how to use it for this task hence ending this portion of the assignment for me.
 ---
 
+# **BONUS** : With BYOL
