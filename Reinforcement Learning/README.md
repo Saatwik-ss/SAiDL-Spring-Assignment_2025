@@ -196,3 +196,19 @@ $$
 
 - Factorized noise reduces the number of noise parameters while maintaining exploration benefits.
 - Applyies independent Gaussian noise to each weight and bias, factorized noise samples two lower-dimensional noise vectors, one for input and one for output. These are then combined multiplicatively to form a full noise matrix as described above.
+- Applied Guassian, Gamma and Beta noises as factorized noises, to be noted that the different noise layers differ only in the distribution of noise especialli in the (_scale_noise) functions.
+
+  ### Gaussian noise:
+![image](https://github.com/user-attachments/assets/8b2fdbbd-1647-4245-9cf2-7a1137ceacc0)
+
+
+
+### Beta Noise
+![Screenshot 2025-03-24 021612](https://github.com/user-attachments/assets/13c982c3-9f09-453c-a0db-4149c27ffe26)
+
+
+### Gamma Noise:
+![Screenshot 2025-03-24 021143](https://github.com/user-attachments/assets/a23a773c-bdc8-486a-89b0-26f7dce38c6f)
+
+
+
