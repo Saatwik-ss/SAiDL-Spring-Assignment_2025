@@ -182,3 +182,8 @@ $$
 
 - Monte Carlo method is employed to approximate the gradient of the loss function
 
+### Independent Noise:
+
+- Initially started with implementing Independent noise as it appeared more easier to understand and get feel of.
+- Initial iterations were again bit random in terms of rewards and time taken to train and the hopper couldn't complete the jumps.
+- 
