@@ -40,6 +40,8 @@ The implementation has tried to include features as asked in the assignment ques
 - Hopper started completing the terrain few times somewhere around 2500 episodes.
 - Was able to complete the terrain 7/10 times after 5000 episodes as seen [here](Results/td3_i2_run_5000.mp4).
 - This step as it went, took the most time for completion along with implementing noisy layers but helped create a framework which was resued for all later iterations of the hopper.
+- ![td3_rewards (5)](https://github.com/user-attachments/assets/5a920120-c1e7-473b-afd9-763f1a78ef30)
+
 
 
 ## TD3- working
