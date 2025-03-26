@@ -190,16 +190,4 @@ for i in range(num_test_episodes):
         ep_reward += reward
     total_rewards.append(ep_reward)
     print(f"Test Episode {i+1}: Reward = {ep_reward:.2f}")
-
-avg_reward = np.mean(total_rewards)
-print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
 env.close()
-
-plt.figure(figsize=(8, 5))
-plt.plot(range(1, num_test_episodes + 1), total_rewards, marker='o', color='g')
-plt.xlabel("Test Episode")
-plt.ylabel("Reward")
-plt.title("TD3 Test Rewards")
-plt.grid()
-plt.savefig("test_rewards.png")
-plt.show()
