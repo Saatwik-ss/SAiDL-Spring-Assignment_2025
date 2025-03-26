@@ -212,6 +212,13 @@ $$
 ### Gamma Noise:
 ![Screenshot 2025-03-24 021143](https://github.com/user-attachments/assets/a23a773c-bdc8-486a-89b0-26f7dce38c6f)
 
+---
+## Training rewards-
+For about 2800 episodes, the training rewards of Gaussian easliy overtook the vanilla noise TD3 thus succesfully reimplementing the desired results of the paper. The style of graph used isn't as appropriate enough as the line graph but the different in rewards is clear and visible enough.
+
+
+
+![rewards_2800](https://github.com/user-attachments/assets/0788c193-c2f3-46c5-bb9c-c1737a8946db)
 
 ## 2-b:) How would you test the adversarial robustness of your setup? Would the performance be affected by different encoder blocks (CNNs, Attention Heads) 
 
