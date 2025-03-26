@@ -237,19 +237,4 @@ for episode in range(num_test_episodes):
 
     total_rewards.append(episode_reward)
     print(f"Test Episode {episode+1}: Reward = {episode_reward:.2f}")
-
-# Compute and display average performance
-avg_reward = np.mean(total_rewards)
-print(f"\nAverage Reward over {num_test_episodes} test episodes: {avg_reward:.2f}")
 env.close()
-
-
-plt.figure(figsize=(8, 5))
-plt.plot(range(1, num_test_episodes + 1), total_rewards, marker='o', linestyle='-', color='g', alpha=0.7)
-plt.xlabel("Test Episode")
-plt.ylabel("Reward")
-plt.title("TD3 Test Rewards Over 10 Episodes")
-plt.xticks(range(1, num_test_episodes + 1))
-plt.grid()
-plt.savefig("test_rewards.png")
-plt.show()
