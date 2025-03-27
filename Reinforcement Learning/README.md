@@ -10,6 +10,7 @@ Having previously worked with Deep Double Q-Networks (DDQN)in an ERC project, I 
 - Watched some youtube videos about RL mostly from the youtube channel https://www.youtube.com/@jekyllstein
 - [Gibberblot](https://gibberblot.github.io/)
 - Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron
+- Attatched some files whihc i used to explore the environment and apply some other vanilla models on the hopper in [Archive](Archive)
 
   
 ### Implementing TD3  
