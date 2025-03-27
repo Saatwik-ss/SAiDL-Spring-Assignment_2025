@@ -71,11 +71,15 @@ class TD3Agent:
         self.critic = Critic(state_dim, action_dim).to(device)
         self.critic_target = Critic(state_dim, action_dim).to(device)
 # load_state_dict: load the model's parameters from its state dictionary
+        #print(self.actor.state_dict())        
 # state_dict(): returns a dictionary containing the model's entire state
+        #print(self.critic.state_dict())
         self.actor_target.load_state_dict(self.actor.state_dict())
         self.critic_target.load_state_dict(self.critic.state_dict())
 
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=actor_lr)
+            #    for params in self.actor.parameters():
+    #        print(params)
         self.critic_optimizer = optim.Adam(self.critic.parameters(), lr=critic_lr)
 
         self.replay_buffer = []
