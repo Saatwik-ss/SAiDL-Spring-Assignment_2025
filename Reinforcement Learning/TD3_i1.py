@@ -24,7 +24,7 @@ class Actor(nn.Module):
         state = state.to(device)
         x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
-        return torch.tanh(self.fc3(x)) * self.max_action  
+        return torch.tanh(self.fc3(x)) * self.max_action  # Deterministic action
 
 
 class Critic(nn.Module):
