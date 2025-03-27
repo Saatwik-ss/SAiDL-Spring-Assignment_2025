@@ -56,6 +56,11 @@ class Critic(nn.Module):
 
 
 class TD3Agent:
+# state_dim, action_dim, max_action are environment parameters
+# gamma: Discount factor(Bellman equation) Default: 0.99
+# tau: Interpolation factor for soft target network updates (Polyak averaging). Default: 0.005
+# actor_lr: Learning rate for the actor ,default: 3e-4
+# critic_lr: Learning rate for the critic ,default: 3e-4
     def __init__(self, state_dim, action_dim, max_action, gamma=0.99, tau=0.005, actor_lr=3e-4, critic_lr=3e-4):
         self.gamma = gamma
         self.tau = tau
