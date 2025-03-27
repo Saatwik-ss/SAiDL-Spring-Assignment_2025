@@ -2,6 +2,7 @@ import sys
 import numpy as np
 import pygame
 import math
+import torch
 
 # Game constants
 row_count = 6
@@ -121,6 +122,8 @@ move_list = []  # Stores moves as A1, B2
 GameBoard.draw_board(board, move_list)
 myfont = pygame.font.SysFont("monospace", 75)
 
+dataform = torch.zeros((6, 7))
+    
 # Main game loop
 while not game_over:
     for event in pygame.event.get():
@@ -156,12 +159,22 @@ while not game_over:
                     pygame.display.update()  
                     pygame.time.wait(1000)
                     game_over = True  
+                    
 
+                    
+                                    
+                if color == red:
+                    dataform[row][col] = 1
+                elif color == yellow:
+                    dataform[row][col] = -1
+                print(dataform)
+                
                 GameBoard.draw_board(board, move_list)
                 turn = (turn + 1) % 2  # Switch turns
 
             if game_over:
                 pygame.time.wait(2000)
+                
                 board = GameBoard.create_board()
                 move_list = []
                 GameBoard.draw_board(board, move_list)
