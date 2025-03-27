@@ -70,7 +70,8 @@ class TD3Agent:
         self.actor_target = Actor(state_dim, action_dim, max_action).to(device)
         self.critic = Critic(state_dim, action_dim).to(device)
         self.critic_target = Critic(state_dim, action_dim).to(device)
-
+# load_state_dict: load the model's parameters from its state dictionary
+# state_dict(): returns a dictionary containing the model's entire state
         self.actor_target.load_state_dict(self.actor.state_dict())
         self.critic_target.load_state_dict(self.critic.state_dict())
 
