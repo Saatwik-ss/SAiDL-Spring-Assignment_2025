@@ -5,13 +5,14 @@ This repository contains an implementation of **Twin Delayed Deep Deterministic 
 
 Having previously worked with Deep Double Q-Networks (DDQN)in an ERC project, I wanted to extend my experience in reinforcement learning by reimplementing my prior knowledge in RL models to TD3 model
 
-## Learning stage  
+### Learning stage  
 - Started with Saidl suggested resources like [Open-AI](https://spinningup.openai.com/en/latest/index.html) and **Reinforcement Learning: An Introduction by Sutton and Barto**.
 - Watched some youtube videos about RL mostly from the youtube channel https://www.youtube.com/@jekyllstein
 - [Gibberblot](https://gibberblot.github.io/)
 - Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron
-- Attatched some files which i used to explore the environment and apply some other vanilla models on the hopper in [Archive](Archive)
+- Attatched some files which i used to explore the environment and apply some other vanilla models on the hopper in [Archive](Archive) including some torch implementations of stuff told in spinning up.
 
+---
   
 ### Implementing TD3  
 Attempted to implement the a basic TD3 architecture from scratch to gain more independence and flexibility and the ability to plug and play different features as asked in the assignment question.
