@@ -1,12 +1,12 @@
 # Mastering the game of Go without human knowledge
 
 This project, will try to implement a simple and small MCTS as suggested by [this paper](https://www.nature.com/articles/nature24270) by Google Deepmind.
-Initially wanted to attemot Attention is all you need but chnaged it later.
+Initially wanted to attempt Attention is all you need but changed it later.
 
 Developed interest in the topic after seeing the documentary about [alpha go](https://www.youtube.com/watch?v=WXuK6gekU1Y&t=4568s&ab_channel=GoogleDeepMind)
 
-## Paper review-
-Alpha Zero, by DeepMind,was focuesd on the idea of creating an artificial intelligence model which did not require any input from external or human data. Unlike its predecessor, AlphaGo, which learned from human expert games, AlphaGo Zero learned purely through self-play using Monte Carlo Tree Search (MCTS) and a deep neural network. It employed a single neural network for both policy and value estimation, updated through reinforcement learning with no external supervision and only knowledge about the rules of the game.
+## Paper review- 
+Alpha Zero, by DeepMind, was focused on the idea of creating an artificial intelligence model which did not require any input from external or human data. Unlike its predecessor, AlphaGo, which learned from human expert games, AlphaGo Zero learned purely through self-play using Monte Carlo Tree Search (MCTS) and a deep neural network. It employed a single neural network for both policy and value estimation, updated through reinforcement learning with no external supervision and only knowledge about the rules of the game.
 
 The algorithm relied solely on reinforcement learning through self-play, where a neural network predicted its own moves and game outcomes. This iterative process strengthened its tree search capabilities, leading to increasingly better move selection.
 
@@ -35,7 +35,7 @@ The network takes the board state as input.
 - It passes through multiple residual blocks and before the neural network gives out any meaningful result gets trained on thousands of random rollouts.
 
 The output branches into:
-- Policy Head.
+- Policy Head.(Gives out a policy to the ai model based on calculating which node will give the maximum return for an $n$ number of future moves)
 ![Screenshot 2025-03-23 015700](https://github.com/user-attachments/assets/1e4c2d33-e5eb-4034-a0c1-93a912789f1d)
 Through the policy network the MCTS algorithm avoids having to go through each node possible and the available moves are reduced by a great margin.
 - Value Head (single scalar between -1 and 1).
@@ -43,3 +43,5 @@ Through the policy network the MCTS algorithm avoids having to go through each n
 Helps the model avoid going right to the end of the tree search by reducing the number of nodes it has to travel through by introducing a confidence cutoff where if the neural network is confident enough about a particular branch, it'll get registered as a win(or loss). This helps the model avoid having to calculate each branch right to the end.
 
 At a higher level the function of the neural network is just to calculate how good a particular state is for the AI player and how good or bad would a certain move would be.
+
+#### **Monte Carlo Tree Search algorithm:**
