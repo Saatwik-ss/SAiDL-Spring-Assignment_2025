@@ -1,0 +1,7 @@
+Python: 3.12.8
+time
+math
+sys
+numpy: 2.2.3
+pygame: 2.6.1
+torch: 2.5.1+cu118
