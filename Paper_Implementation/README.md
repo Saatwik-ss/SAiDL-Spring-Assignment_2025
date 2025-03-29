@@ -24,4 +24,20 @@ The algorithm relied solely on reinforcement learning through self-play, where a
 ## Methodology-
 uses a deep neural network $f(θ)$ with parameters $θ$. This neural network takes as input the raw board representation $s$ of the position and its history, and outputs both move probabilities and a value: $(p, v) = f_{\theta}(s)$.  
 The vector of move probabilities $p$ represents the probability of selecting each move $a$, $p_a = Pr(a \mid s)$.
-The neural network consists of many residual blocks4 of convolutional layers with batch normalization and rectifier nonlinearities
+The neural network consists of many residual blocks of convolutional layers with batch normalization and rectifier nonlinearities.
+The neural network was also aided by additional exploratio achieved by adding Dirichlet noise to the root node.
+
+
+The whole working of alpha go zero can be attributed to two(or three) components, namely a single deep neural network which works as both policy head and value head along with a MCTS algorithm.
+
+### Architecture:
+The network takes the board state as input.
+- It passes through multiple residual blocks and before the neural network gives out any meaningful result gets trained on thousands of random rollouts.
+
+The output branches into:
+- Policy Head (softmax over moves).
+![Screenshot 2025-03-23 015700](https://github.com/user-attachments/assets/1e4c2d33-e5eb-4034-a0c1-93a912789f1d)
+Through the policy network the MCTS algorithm avoids having to go through each node possible and the available moves are reduced by a great margin.
+- Value Head (single scalar between -1 and 1).
+![Screenshot 2025-03-23 015858](https://github.com/user-attachments/assets/959ca6b4-b530-49f4-8b86-23a2670bf6d9)
+Helps the model avoid going right to the end of the tree search by reducing the number of nodes it has to travel through by introducing a confidence cutoff where if the neural network is confident enough about a particular branch, it'll get registered as a win(or loss). This helps the model avoid having to calculate each branch right to the end.
