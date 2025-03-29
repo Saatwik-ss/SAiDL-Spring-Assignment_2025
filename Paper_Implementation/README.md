@@ -35,7 +35,7 @@ The network takes the board state as input.
 - It passes through multiple residual blocks and before the neural network gives out any meaningful result gets trained on thousands of random rollouts.
 
 The output branches into:
-- Policy Head (softmax over moves).
+- Policy Head.
 ![Screenshot 2025-03-23 015700](https://github.com/user-attachments/assets/1e4c2d33-e5eb-4034-a0c1-93a912789f1d)
 Through the policy network the MCTS algorithm avoids having to go through each node possible and the available moves are reduced by a great margin.
 - Value Head (single scalar between -1 and 1).
