@@ -41,3 +41,5 @@ Through the policy network the MCTS algorithm avoids having to go through each n
 - Value Head (single scalar between -1 and 1).
 ![Screenshot 2025-03-23 015858](https://github.com/user-attachments/assets/959ca6b4-b530-49f4-8b86-23a2670bf6d9)
 Helps the model avoid going right to the end of the tree search by reducing the number of nodes it has to travel through by introducing a confidence cutoff where if the neural network is confident enough about a particular branch, it'll get registered as a win(or loss). This helps the model avoid having to calculate each branch right to the end.
+
+At a higher level the function of the neural network is just to calculate how good a particular state is for the AI player and how good or bad would a certain move would be.
