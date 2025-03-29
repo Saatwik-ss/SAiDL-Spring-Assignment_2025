@@ -45,3 +45,33 @@ Helps the model avoid going right to the end of the tree search by reducing the 
 At a higher level the function of the neural network is just to calculate how good a particular state is for the AI player and how good or bad would a certain move would be.
 
 #### **Monte Carlo Tree Search algorithm:**
+![Screenshot 2025-03-23 015911](https://github.com/user-attachments/assets/96fc58d1-3467-4583-bc8f-59a2fae72508)
+
+MCTS selects the best move based on the **Upper Confidence Bound (UCB)** or **PUCT** formula.
+
+ **1. UCB Formula (Classic MCTS):**
+
+ 
+$UCB(s, a) = \frac{W(s, a)}{N(s, a)} + c \sqrt{\frac{\ln (P)}{N(s, a)}}$
+where:
+- $W(s, a)$ = Total reward from action $a$.
+- $N(s, a)$ = Number of times action $a$ has been taken.
+- $P$ = Total number of visits to the parent node.
+- $c$ = Exploration constant.
+
+**2. PUCT Formula (Used in AlphaGo Zero)**
+
+$U(s, a) = Q(s, a) + c P(s, a) \frac{\sqrt{\sum_b N(s, b)}}{1 + N(s, a)}$
+where:
+- $Q(s, a)$ = Estimated value of move $a$ (average past game outcomes).
+- $P(s, a)$ = Prior probability of move $a$, predicted by the neural network.
+- $N(s, a)$ = Visit count for action $a$.
+- $sum_b N(s, b)$ = Total visits to all child nodes.
+- $c$  = Exploration constant.
+
+For each node iteratively, the node with the highest PUCT formula is chosen till it hits the final node. This formula includes scope for both exploration and exploitation.
+
+Surprisingly this is all that was required to create the highest performing model created by humans and it took me by surprise on how easy the whole paper was to understand considering how impressive the result was.
+
+---
+# **My Implementation**
