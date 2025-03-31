@@ -110,6 +110,10 @@ The way it is different from the Alpha Go implementation is in the following 4wa
 ## Connect4
 Once TicTacToe was done it was not much difficult to implemet the same on a connect 4 model, similar structure was used with the same ideas just different game rules.
 
-Also used a simple rule in Connect4 which gave higher probability to moves which connected the AI pieces or disconnect opponent pieces and the model trained on it played better than the vanilla no rule implementation but I later dropped it since i though it goes against the spirit of the paper where Zero literally means Zero human input.
+Also used a simple rule in Connect4 which gave higher probability to moves which connected the AI pieces or disconnect opponent pieces and the model trained on it played better than the vanilla no rule implementation but I later dropped it since i thought it goes against the spirit of the paper where Zero literally means Zero human input.
 
 Trained the model to 2000 epochs for 10,000 games in each epoch and the loss came down to about 0.35(starting from 0.69) at 1200 epochs and then plateued initially and then started overfitting for the recent games, thus reaching the best performance it could on my setup.
+
+It understood some good opening tactics and did inital defence alright since those were the moves it saw the most but as the game went on its performance dipped and many of the best moves were second in its priority so it bludered many times away by either not connecting the 4th piece after connecting 3 of each or not being able to disconnect the opponent when they have connected 3. It was mainly because those games were seen less by the model.
+
+### Using actual MCTS in Connect4
