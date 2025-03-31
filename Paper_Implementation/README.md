@@ -75,3 +75,41 @@ Surprisingly this is all that was required to create the highest performing mode
 
 ---
 # **My Implementation**
+While understanding the paper was rather easy trying to write the code was rather a challenge especially so since the implementations available were a bit beyond my understanding in a way that i could understand what each function or bit of code did but had trouble understanding how they all connected and worked together.
+
+Initially i planned to implement the game in the traditional go environment so i also learnt the rules of them game however the game of go also not only needed the current state but also the previous states of the board to play so i dropped the idea as i felt that the game environment was of second priority. Hence i decided to work with chess. However due to low time i had to settle with connect4.
+
+This project was extra special since i spent more time working out how i'll implement things on a notebook rather than coding which felt better.
+
+## TicTacToe 
+
+Since Connect4 was very similar to TicTacToe i planned to start with tic tac toe to learn and test my methods. I had experience working with pygame but i had forgotten a lot so i took quite some help from LLMs for this project.
+
+I initially created a TicTacToe environment where the initial board state consisted of a 3 **x** 3 matrix of all zeros
+Moves of each player were either marked as 1 or -1 and appended to the matrix which was fed to the Convoluted Neural Network. The CNN was in fact trained on the random games the computer played with itself and let to either a +1/0/-1 outcome and hence the more games it played the better the CNN got at prediciting a good move.
+The job of this neural network was to determine the probability of the opposition(Human) player to win. Hence the job of the one node tree search(if it can be called that) was to choose a move which reduced the probaility of human to win.
+
+### Rundown
+- Each player's move is marked as 1 (AI) or -1 (Human) and updated in the matrix.
+
+- The updated board state is then fed into a Convolutional Neural Network (CNN).
+    - +1 (AI win), 0 (Draw), or -1 (AI loss to human).
+    - Over time, as more games are played, the CNN improves at predicting the game outcome given a board state.
+      
+- The CNN’s goal is to predict the probability of the human (opponent) winning from the given state.
+  
+- The AI uses a one-step lookahead (a "one-node tree search"), selecting the move that minimizes the opponent’s probability of winning.
+
+The way it is different from the Alpha Go implementation is in the following 4ways-
+
+- 1) MCTS Depth- It does not go as deep as Alpha go did it only goes for one step ahead lookup.
+- 2)  The CNN has no control on the move the game simulator playes, it will be easy to implement but its not there in the current iteration.
+- 3)  There is no noise implemented and unlike Alpha go which had noise both in trainig and evaluation(playing games). Which will not be implemented in later versions as well due to the simplicity of the games involved.
+- 4)  CNN model- CNN will be good for this purpose since its  a 2D matrix and CNNs are good at feature extraction however Alpha Go used  ResNet architecture model.
+ 
+## Connect4
+Once TicTacToe was done it was not much difficult to implemet the same on a connect 4 model, similar structure was used with the same ideas just different game rules.
+
+Also used a simple rule in Connect4 which gave higher probability to moves which connected the AI pieces or disconnect opponent pieces and the model trained on it played better than the vanilla no rule implementation but I later dropped it since i though it goes against the spirit of the paper where Zero literally means Zero human input.
+
+Trained the model to 2000 epochs for 10,000 games in each epoch and the loss came down to about 0.35(starting from 0.69) and then plateued initially and then started overfitting for the recent games, thus reaching the best performance it could on my setup.
