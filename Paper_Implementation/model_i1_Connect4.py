@@ -143,7 +143,7 @@ class ConnectFourCNN(nn.Module):
 
 model = ConnectFourCNN().to(device)
 model.load_state_dict(torch.load(r"C:\Users\saatw\Downloads\connect_four_epoch_800.pt", map_location=device))
-model.eval()  # Set model to evaluation mode
+model.eval()
 
 def convert_board_for_model(board):
     """
