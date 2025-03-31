@@ -256,5 +256,5 @@ while not game_over:
         turn = 0
         
         
-""" Bhai kya Crazy khela
+""" kya Crazy khela
 """
