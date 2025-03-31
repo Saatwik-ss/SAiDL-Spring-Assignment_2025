@@ -112,4 +112,4 @@ Once TicTacToe was done it was not much difficult to implemet the same on a conn
 
 Also used a simple rule in Connect4 which gave higher probability to moves which connected the AI pieces or disconnect opponent pieces and the model trained on it played better than the vanilla no rule implementation but I later dropped it since i though it goes against the spirit of the paper where Zero literally means Zero human input.
 
-Trained the model to 2000 epochs for 10,000 games in each epoch and the loss came down to about 0.35(starting from 0.69) and then plateued initially and then started overfitting for the recent games, thus reaching the best performance it could on my setup.
+Trained the model to 2000 epochs for 10,000 games in each epoch and the loss came down to about 0.35(starting from 0.69) at 1200 epochs and then plateued initially and then started overfitting for the recent games, thus reaching the best performance it could on my setup.
