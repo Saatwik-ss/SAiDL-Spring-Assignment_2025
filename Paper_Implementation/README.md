@@ -85,7 +85,7 @@ This project was extra special since i spent more time working out how i'll impl
 
 ## TicTacToe 
 
-Since Connect4 was very similar to TicTacToe i planned to start with tic tac toe to learn and test my methods. I had experience working with pygame but i had forgotten a lot so i took quite some help from LLMs for this project.
+Since Connect4 was very similar to TicTacToe i planned to start with tic tac toe to learn and test my methods. I had experience working with pygame but i had forgotten a lot(also the pygame website is blocked on bits wifi so thats something) so i took quite some help from LLMs for game environment part of this project.
 
 I initially created a TicTacToe environment where the initial board state consisted of a 3 **x** 3 matrix of all zeros
 Moves of each player were either marked as 1 or -1 and appended to the matrix which was fed to the Convoluted Neural Network. The CNN was in fact trained on the random games the computer played with itself and let to either a +1/0/-1 outcome and hence the more games it played the better the CNN got at prediciting a good move.
