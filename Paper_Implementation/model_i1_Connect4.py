@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import time
+move = int(input("ENTER TURN MODE(Turn=0: human moves first , Turn=1: AI moves first) : "))
 pygame.init()
 row_count = 6
 column_count = 7
@@ -189,7 +190,7 @@ def ai_move(board):
 
 board = GameBoard.create_board()
 game_over = False
-turn = 0  # turn==0: human (player1), turn==1: AI (player2)
+turn = move  # turn==0: human (player1), turn==1: AI (player2)
 move_list = []  # Stores moves
 myfont = pygame.font.SysFont("monospace", 75)
 
