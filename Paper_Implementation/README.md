@@ -97,6 +97,7 @@ The job of this neural network was to determine the probability of the oppositio
 - The updated board state is then fed into a Convolutional Neural Network (CNN).
     - +1 (AI win), 0 (Draw), or -1 (AI loss to human).
     - Over time, as more games are played, the CNN improves at predicting the game outcome given a board state.
+    - The model gives out logits from -1 to 1 where loss function is BCEloss with logits.
       
 - The CNN’s goal is to predict the probability of the human (opponent) winning from the given state.
   
