@@ -120,3 +120,8 @@ Trained the model to 2000 epochs for 10,000 games in each epoch and the loss cam
 It understood some good opening tactics and did inital defence alright since those were the moves it saw the most but as the game went on its performance dipped and many of the best moves were second in its priority so it bludered many times away by either not connecting the 4th piece after connecting 3 of each or not being able to disconnect the opponent when they have connected 3. It was mainly because those games were seen less by the model.
 
 ### Using actual MCTS in Connect4
+Started by using the pre trained C4_1200 epoch model to start the training rather than starting from scratch.
+
+To get a good understanding of MCTS, instead of creating an MCTS to train, i planned on using mcts to counter the one step lookahead feature of my current architecture.
+
+
