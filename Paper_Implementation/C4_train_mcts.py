@@ -278,7 +278,7 @@ board = board.unsqueeze(0).unsqueeze(0)
 model = ResNet()
 with torch.no_grad():
     policy, value = model(board)
-print("\nPolicy Output (Move Probabilities):", policy.numpy().flatten())
+print("Policy Output (Move Probabilities):", policy.numpy().flatten())
 print("Value Output (Win Probability Estimate):", value.item())
 
 """
@@ -307,56 +307,55 @@ def self_play(num_games=1000):
         game_policies = []
         turn = 1
 
- ################################# WHILE #################################
-
-
-
-
-
-
+        ################################# WHILE LOOP #################################
         while not is_terminal_node(board):
             node = root
 
+
             for numnodes in range(100):
-                # go through the tree with best child
+                # go through the tree using best_child() repeatedly.
                 while True:
                     next_node = node.best_child()
                     if next_node is None:
                         break
                     node = next_node
 
-                # expanding the node
+
                 expanded_node = node.expand(turn)
                 if expanded_node is not None:
+                    # if expansion creates a new node move to that node
                     node = expanded_node
                     board_input = node.board.unsqueeze(0).unsqueeze(0)
                     with torch.no_grad():
                         _, value = model(board_input)
                     node.backpropagate(value.item())
                 else:
+                    # if no more expansion possible
                     board_input = node.board.unsqueeze(0).unsqueeze(0)
                     with torch.no_grad():
                         _, value = model(board_input)
                     node.backpropagate(value.item())
 
-            # Pick the best move based on UCT value
+
             chosen_child = root.best_child()
             if chosen_child is None:
                 break
             chosen_action = chosen_child.action_taken
 
+            # Record training data
             game_states.append(root.board.clone().detach())
             game_policies.append(chosen_action)
 
             row = get_next_open_row(board, chosen_action)
             board[row, chosen_action] = turn
+            
+            
             root = root.children[chosen_action]
+            # Switch turns between players.
             turn *= -1
             
-            
-            
- ################################# WHILE #################################            
-
+        ################################# WHILE LOOP #################################
+        
         outcome = 1 if winning_move(board, 1) else -1 if winning_move(board, -1) else 0
         for state, policy_target in zip(game_states, game_policies):
             training_data.append((state, policy_target, outcome))
@@ -371,15 +370,17 @@ def self_play(num_games=1000):
 
 
 
+
 def train_model(training_data):
     states, policies, values = zip(*training_data)
     states = torch.stack(states).unsqueeze(1)  # (N, 1, 6, 7)
     policies = torch.tensor(policies, dtype=torch.long) 
     values = torch.tensor(values, dtype=torch.float32).unsqueeze(1)  # (N, 1)
-
     dataset = torch.utils.data.TensorDataset(states, policies, values)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
 
+
+    
     for epoch in range(EPOCHS):
         total_loss = 0
         # tqdm progress bar for epochs
@@ -392,8 +393,8 @@ def train_model(training_data):
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
-        print(f"Epoch {epoch+1}/{EPOCHS}, Loss: {total_loss:.4f}")
-    torch.save(model.state_dict(), "final_model.pth")
+        print(f"Epoch {epoch+1}/{EPOCHS}, Loss: {total_loss}")
+    torch.save(model.state_dict(), "finally.pth")
 
 training_data = self_play(num_games=100)
 train_model(training_data)
