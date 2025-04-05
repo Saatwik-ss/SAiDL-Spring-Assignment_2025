@@ -91,6 +91,8 @@ I initially created a TicTacToe environment where the initial board state consis
 Moves of each player were either marked as 1 or -1 and appended to the matrix which was fed to the Convoluted Neural Network. The CNN was in fact trained on the random games the computer played with itself and let to either a +1/0/-1 outcome and hence the more games it played the better the CNN got at prediciting a good move.
 The job of this neural network was to determine the probability of the opposition(Human) player to win. Hence the job of the one node tree search(if it can be called that) was to choose a move which reduced the probaility of human to win.
 
+The TicTacToe implementation is not presented here due to its redundancy.
+
 ### Rundown
 - Each player's move is marked as 1 (AI) or -1 (Human) and updated in the matrix.
 
@@ -115,6 +117,11 @@ Once TicTacToe was done it was not much difficult to implemet the same on a conn
 
 Also used a simple rule in Connect4 which gave higher probability to moves which connected the AI pieces or disconnect opponent pieces and the model trained on it played better than the vanilla no rule implementation but I later dropped it since i thought it goes against the spirit of the paper where Zero literally means Zero human input.
 
-Trained the model to 2000 epochs for 10,000 games in each epoch and the loss came down to about 0.35(starting from 0.69) at 1200 epochs and then plateued initially and then started overfitting for the recent games, thus reaching the best performance it could on my setup.
+[Trained](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/Connect4_i1_training%20script.py) the model to 2000 epochs for 10,000 games in each epoch and the loss came down to about 0.35(starting from 0.69) at [1200 epochs](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/Weights/connect_four_epoch_1200.pt) and then plateued initially and then started overfitting for the recent games, thus reaching the best performance it could on my setup.
 
-It understood some good opening tactics and did inital defence alright since those were the moves it saw the most but as the game went on its performance dipped and many of the best moves were second in its priority so it bludered many times away by either not connecting the 4th piece after connecting 3 of each or not being able to disconnect the opponent when they have connected 3. It was mainly because those games were seen less by the model
+It understood some good opening tactics and did inital defence alright since those were the moves it saw the most but as the game went on its performance dipped and many of the best moves were second in its priority so it bludered many times away by either not connecting the 4th piece after connecting 3 of each or not being able to disconnect the opponent when they have connected 3. It was mainly because those games were seen less by the [model](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/model_i1_Connect4.py)
+
+# Implementing MCTS:
+To implement MCTS to my environment, instead of starting with random moves from the start i planned to start with my saved model checkpoints and use them to reduce computational load and training period and alos practice with the impelementation of MCTS.
+
+I began by using the probabilities of winning from each move to filter obviously bad moves and expanded those moves, then the model changes the player(to human) to perform self play and play each possible move, then re-iteratively the model chooses the best moves with over 50% win probability for the AI model and expands further, the model again plays as human and goes down till either a result is achieved. To reduce the depth of search, if the AI model has probabilty of winning between $(0.1 , 0.9)$, it'll get registered as a loss and win respectively for the AI model.5
