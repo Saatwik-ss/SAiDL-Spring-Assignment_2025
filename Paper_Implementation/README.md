@@ -124,4 +124,7 @@ It understood some good opening tactics and did inital defence alright since tho
 # Implementing MCTS:
 To implement MCTS to my environment, instead of starting with random moves from the start i planned to start with my saved model checkpoints and use them to reduce computational load and training period and alos practice with the impelementation of MCTS.
 
-I began by using the probabilities of winning from each move to filter obviously bad moves and expanded those moves, then the model changes the player(to human) to perform self play and play each possible move, then re-iteratively the model chooses the best moves with over 50% win probability for the AI model and expands further, the model again plays as human and goes down till either a result is achieved. To reduce the depth of search, if the AI model has probabilty of winning between $(0.1 , 0.9)$, it'll get registered as a loss and win respectively for the AI model.5
+I began by using the probabilities of winning from each move to filter obviously bad moves and expanded those moves, then the model changes the player(to human) to perform self play and play each possible move, then re-iteratively the model chooses the best moves with over 50% win probability for the AI model and expands further, the model again plays as human and goes down till either a result is achieved. To reduce the depth of search, if the AI model has probabilty of winning between $(0.1 , 0.9)$, it'll get registered as a loss and win respectively for the [AI model](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/C4_CNN_trainedMCTS.py).
+
+
+
