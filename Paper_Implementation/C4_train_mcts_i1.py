@@ -248,7 +248,7 @@ class MCTNode():
         self.visit_count += 1
         self.total_value += value
         if self.parent:
-            self.parent.backpropagate(-value)  # Flip sign to account for opponent
+            self.parent.backpropagate(-value)  # Flip sign to account for both
             
             
 
