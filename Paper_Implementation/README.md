@@ -142,3 +142,10 @@ The model however performed subpar compared to the CNN architecture as it could 
 
 ## Testing:
 The model prefers to vertically stack pieces rather than any concrete plan. which may be indicating either lack of exploration or lack of depth while searching. Its more likely to be shallow depth search since it keeps most UCT values at similatr levels.
+
+### Future work:
+![1000047900](https://github.com/user-attachments/assets/e4f8a249-6b4b-4a60-b2d7-7127ea1dd2c7)
+
+Go environment implemented with CNN architecture.
+
+Instead of removing dead pieces, assumes them of the other colour, not fully according to official Go rules.
