@@ -107,24 +107,38 @@ The TicTacToe implementation is not presented here due to its redundancy.
 
 The way it is different from the Alpha Go implementation is in the following 4ways-
 
-- 1) MCTS Depth- It does not go as deep as Alpha go did it only goes for one step ahead lookup.
+- 1) MCTS Depth- It does not go as deep as Alpha go did, it only goes for one step ahead lookup.
 - 2)  The CNN has no control on the move the game simulator playes, it will be easy to implement but its not there in the current iteration.
 - 3)  There is no noise implemented and unlike Alpha go which had noise both in trainig and evaluation(playing games). Which will not be implemented in later versions as well due to the simplicity of the games involved.
-- 4)  CNN model- CNN will be good for this purpose since its  a 2D matrix and CNNs are good at feature extraction however Alpha Go used  ResNet architecture model.
+- 4)  CNN model- CNN will be good for this purpose since its a 2D matrix and CNNs are good at feature extraction however Alpha Go used  ResNet architecture model.
  
 ## Connect4
-Once TicTacToe was done it was not much difficult to implemet the same on a connect 4 model, similar structure was used with the same ideas just different game rules.
+Once TicTacToe was done it was not much difficult to implement the same on a connect 4 model, similar structure was used with the same ideas just different game rules.
 
 Also used a simple rule in Connect4 which gave higher probability to moves which connected the AI pieces or disconnect opponent pieces and the model trained on it played better than the vanilla no rule implementation but I later dropped it since i thought it goes against the spirit of the paper where Zero literally means Zero human input.
 
 [Trained](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/Connect4_i1_training%20script.py) the model to 2000 epochs for 10,000 games in each epoch and the loss came down to about 0.35(starting from 0.69) at [1200 epochs](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/Weights/connect_four_epoch_1200.pt) and then plateued initially and then started overfitting for the recent games, thus reaching the best performance it could on my setup.
 
-It understood some good opening tactics and did inital defence alright since those were the moves it saw the most but as the game went on its performance dipped and many of the best moves were second in its priority so it bludered many times away by either not connecting the 4th piece after connecting 3 of each or not being able to disconnect the opponent when they have connected 3. It was mainly because those games were seen less by the [model](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/model_i1_Connect4.py)
+It understood some good opening tactics and did inital defence alright since those were the moves it saw the most but as the game went on its performance dipped and many of the best moves were second in its priority so it blundered many times away by either not connecting the 4th piece after connecting 3 of each or not being able to disconnect the opponent pieces when 3 are connected. It was mainly because those games were seen less by the [model](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/model_i1_Connect4.py)
 
 # Implementing MCTS:
-To implement MCTS to my environment, instead of starting with random moves from the start i planned to start with my saved model checkpoints and use them to reduce computational load and training period and alos practice with the impelementation of MCTS.
+To implement MCTS to my environment, instead of starting with random moves from the start i planned to start with my saved model checkpoints and use them to reduce computational load and training period and also practice with the implementation of MCTS.
 
-I began by using the probabilities of winning from each move to filter obviously bad moves and expanded those moves, then the model changes the player(to human) to perform self play and play each possible move, then re-iteratively the model chooses the best moves with over 50% win probability for the AI model and expands further, the model again plays as human and goes down till either a result is achieved. To reduce the depth of search, if the AI model has probabilty of winning between $(0.1 , 0.9)$, it'll get registered as a loss and win respectively for the [AI model](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/C4_CNN_trainedMCTS.py).
+I began by using the probabilities of winning from each move to filter obviously bad moves and expanded those moves, then the model changes the player(to human) to perform self play and play each possible move, then re-iteratively the model chooses the best moves with over 50% win probability for the AI model and expands further, the model again plays as human and goes down till either a result is achieved. To reduce the depth of search, if the AI model has probability of winning between $(0.1 , 0.9)$, it'll get registered as a loss and win respectively for the [AI model](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/C4_CNN_trainedMCTS.py).
 
+## ResNet structure:
+Tried implementing the same model architecture as described in the paper, a [Resnet model](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/C4_train_mcts_i1.py) with 20 residual blockswith a policy head and a value head.
+The architecture is split into two heads:
+- Policy head for predicting action probabilities.
 
+- Value head for estimating win chances (between -1 and 1).
+The forward pass also includes logic to mask invalid moves to ensure the policy only proposes legal actions, a key step often skipped in toy implementations.
 
+Self-play occurs with batche size of 128 for 10 epochs as it plays 100 games in each one. The games are stored to treat as training data for the ResNet model. 
+
+The trained features are then reapplied to the same ResNet architecture and  MCTS while testing or playing against the AI.
+
+The model however performed subpar compared to the CNN architecture as it could only win 1 game from 10 against the CNN model. This can be a result of either lack of training or lacking in depth of search for the model or a genral lacking in quality of the architecture since it was made in a time constraint.
+
+## Testing:
+The model prefers to vertically stack pieces rather than any concrete plan. which may be indicating either lack of exploration or lack of depth while searching. Its more likely to be shallow depth search since it keeps most UCT values at similatr levels.
