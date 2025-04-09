@@ -8,7 +8,7 @@ Developed interest in the topic after seeing the documentary about [Alpha Go](ht
 
 Use .pth files in [Weights](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/tree/main/Paper_Implementation/Weights) with their respective models:
 
-[model_i1_Connect4.p](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/model_i1_Connect4.py) and goes with [trained_CNN_MCTS.py)](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/trained_CNN_MCTS.py)  go with all non Resnet checkpoints.
+[model_i1_Connect4.p](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/model_i1_Connect4.py) and [trained_CNN_MCTS.py](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/trained_CNN_MCTS.py)  go with all non Resnet checkpoints.
 
 while [MCTS_test_i1](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/MCTS_test_i1.py) goes with [ResNet checkpoint](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Paper_Implementation/Weights/Resnet_checkpoint.pth).
 
