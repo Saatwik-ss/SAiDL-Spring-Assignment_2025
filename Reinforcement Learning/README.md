@@ -5,6 +5,8 @@ This repository contains an implementation of **Twin Delayed Deep Deterministic 
 
 Having previously worked with Deep Double Q-Networks (DDQN)in an ERC project, I wanted to extend my experience in reinforcement learning by reimplementing my prior knowledge in RL models to TD3 model
 
+(Use checkpoints in .pth format to  test on their respective models without the training loop to test the hopper)
+
 ### Learning stage  
 - Started with Saidl suggested resources like [Open-AI](https://spinningup.openai.com/en/latest/index.html) and **Reinforcement Learning: An Introduction by Sutton and Barto**.
 - Watched some youtube videos about RL mostly from the youtube channel https://www.youtube.com/@jekyllstein
