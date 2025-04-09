@@ -89,13 +89,7 @@ def valid_column(board):
     valid_cols = [col for col in range(COLUMN_COUNT) if is_valid_location(board, col)]
     model_board = convert_board_for_model(board)
     model_board_tensor = torch.tensor(model_board, dtype=torch.float32, device=device).unsqueeze(0)
-    with torch.no_grad():
-        logit = model(model_board_tensor)
-        prob = torch.sigmoid(logit).item()
-    if turn == 1:
-        valid_cols = [col for col in valid_cols if prob < 0.8]
-    elif turn == -1:
-        valid_cols = [col for col in valid_cols if prob > 0.2]
+
     return valid_cols
     
 
