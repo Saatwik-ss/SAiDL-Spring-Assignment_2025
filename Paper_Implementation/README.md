@@ -6,6 +6,7 @@ Initially wanted to attempt 'Attention is all you need' but changed it later.
 
 Developed interest in the topic after seeing the documentary about [Alpha Go](https://www.youtube.com/watch?v=WXuK6gekU1Y&t=4568s&ab_channel=GoogleDeepMind)
 
+
 # **AlphaGo Zero**
 ## Paper review- 
 AlphaGo Zero, by DeepMind, focused on the idea of creating an artificial intelligence model which did not require any input from external or human data. Unlike its predecessor, AlphaGo, which learned from human expert games, AlphaGo Zero learned purely through self-play using Monte Carlo Tree Search (MCTS) and a deep neural network. It employed a single neural network for both policy and value estimation, updated through reinforcement learning with no external supervision and only knowledge about the rules of the game.
