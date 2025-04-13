@@ -92,7 +92,7 @@ $$
 
 # TD3 Agent for Hopper-v4 (Stable-Baselines3)
 
-Also tried using Stable Baseline MLP Policy model to compare the two models and from a genral eye test, the custom model was working better for similar number of episodes(5000 each) but Stable Baseline model trained at a faster rate and the model was able to hop the terrain completely after 500000 episodes as seen [here](Results/TD3_inital_run.mp4) with these [rewards](Results/Stable_Baseline_rewards_500000.png).
+Also tried using Stable Baseline MLP Policy model to compare the two models and from a genral eye test, the custom model was working better for similar number of episodes(5000 each) but Stable Baseline model trained at a faster rate and the model was able to hop the terrain completely after 500000 episodes as seen [here](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Reinforcement%20Learning/Results/TD3_initial_run.mp4) with these [rewards]([Results/Stable_Baseline_rewards_500000.png](https://github.com/Saatwik-ss/SAiDL-Spring-Assignment_2025/blob/main/Reinforcement%20Learning/Results/Stable_Baseline_rewards_500000.png)).
 
 [Stable_Baseline_Model](Stable_Baseline_model.py)
 
