@@ -191,7 +191,7 @@ $$
 ### Independent Noise:
 
 - Initially started with implementing Independent noise as it appeared more easier to understand and get feel of.
-- Initial iterations were again bit random in terms of rewards and time taken to train and the hopper couldn't complete the jumps.
+- Initial iterations were again bit random in terms of rewards and time taken to train. Another persistant issue is that the hopper couldn't complete the jumps across the terrain with an acceptable rate.
 - Also started factorized noise part while doing this.
 - Introduces independent Gaussian noise into actor params. Unlike traditional action noise, it perturbs weights and biases directly. trainable noise parameters 
  include sigma_weight, sigma_bias.
@@ -202,7 +202,7 @@ $$
 
 - Factorized noise reduces the number of noise parameters while maintaining exploration benefits.
 - Applyies independent Gaussian noise to each weight and bias, factorized noise samples two lower-dimensional noise vectors, one for input and one for output. These are then combined multiplicatively to form a full noise matrix as described above.
-- Applied Guassian, Gamma and Beta noises as factorized noises, to be noted that the different noise layers differ only in the distribution of noise especialli in the (_scale_noise) functions.
+- Applied Guassian, Gamma and Beta noises as factorized noises, to be noted that the different noise layers differ only in the distribution of noise especially in the (_scale_noise) functions.
 
   ### Gaussian noise:
 ![image](https://github.com/user-attachments/assets/8b2fdbbd-1647-4245-9cf2-7a1137ceacc0)
